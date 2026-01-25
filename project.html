@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calxin Auto Mombasa - Spare Parts & Accessories</title>
+    <link rel="stylesheet" href="project (1).css">
+    <link rel="stylesheet" href="home-styles.css">
+    <script src="project12 (2).js" defer></script>
+    <script src="home-gallery.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-left">
+        <h1>Calxin Auto Mombasa</h1>
+    </div>
+
+    <div class="header-right">
+        <nav class="header-nav">
+            <ul>
+                <li><a href="#" onclick="navigateTo('home')" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" onclick="navigateTo('about')" class="nav-link" data-section="about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#" onclick="navigateTo('contact')" class="nav-link" data-section="contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="wishlist.html" class="nav-link" data-section="wishlist"><i class="fas fa-heart"></i> Wishlist</a></li>
+                <li><a href="#" onclick="showSignIn()" class="nav-link" data-section="signin"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+            </ul>
+        </nav>
+
+        <div class="cart-icon" onclick="showCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </div>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<!-- SEARCH BOX -->
+<section class="search-box">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search spare parts, brand or category...">
+</section>
+
+<!-- SIDE MENU -->
+<aside class="side-menu" id="sideMenu">
+    <h3>Categories</h3>
+    <ul id="categoryList">
+        <!-- Categories dynamically inserted here -->
+    </ul>
+</aside>
+
+<!-- MAIN CONTENT -->
+<section class="products-header">
+    <h2>Our Products</h2>
+    <p>Browse our collection of quality vehicles</p>
+</section>
+
+
+
+<main class="products" id="productDisplay">
+  <!-- Products generated dynamically by JavaScript -->
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>About Us</h4>
+            <p>Calxin Auto Mombasa is your trusted partner in premium vehicles and auto solutions since 2020.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="project.html">Home</a></li>
+                <li><a href="About (2).html">About</a></li>
+                <li><a href="Contact (1).html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p>Email: calxinkenya147@gmail.com</p>
+            <p>Phone: +254 700 123 456</p>
+            <p>Location: Mombasa, Kenya</p>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-media">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Calxin Auto Mombasa. All rights reserved.</p>
+        <p><strong>Designed by:</strong></p>
+            <p>Purice Mwero - <a href="mailto:puricekaka@gmail.com" style="color: #a8d8ff; text-decoration: none;">puricekaka@gmail.com</a></p>
+        <p>Hiram Ngatia - <a href="mailto:hiracharagu@gmail.com" style="color: #a8d8ff; text-decoration: none;">hiracharagu@gmail.com</a></p>
+        <p>Purine Mwero - <a href="mailto:designerpurine@gmail.com" style="color: #a8d8ff; text-decoration: none;">designerpurine@gmail.com</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

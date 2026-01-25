@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calxin Auto Mombasa - Complete Project Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #0077be, #00a8e8);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0077be, #00a8e8);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+
+        .header .tagline {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 15px;
+            color: #a8d8ff;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #0077be;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e0e0e0;
+        }
+
+        .section h2 i {
+            color: #00a8e8;
+            font-size: 2.2rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .link-card {
+            background: linear-gradient(135deg, #f9f9f9, #ffffff);
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-card:hover {
+            border-color: #0077be;
+            box-shadow: 0 10px 30px rgba(0, 122, 190, 0.2);
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, #0077be, #00a8e8);
+            color: white;
+        }
+
+        .link-card:hover .card-icon {
+            color: #a8d8ff;
+            transform: scale(1.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: #0077be;
+            transition: all 0.3s ease;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+
+        .btn-visit {
+            background: #0077be;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .link-card:hover .btn-visit {
+            background: #a8d8ff;
+            color: #0077be;
+        }
+
+        .info-box {
+            background: #f0f7ff;
+            border-left: 5px solid #0077be;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .info-box h3 {
+            color: #0077be;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box p {
+            color: #333;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+
+        .info-box a {
+            color: #0077be;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .info-box a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-section {
+            background: #f9f9f9;
+            border-top: 2px solid #e0e0e0;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .footer-section h3 {
+            color: #0077be;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contact-card h4 {
+            color: #0077be;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .contact-card a {
+            color: #0077be;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #0077be;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .badge.new {
+            background: #00a700;
+        }
+
+        .badge.updated {
+            background: #ff9800;
+        }
+
+        .divider {
+            border-top: 2px solid #e0e0e0;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>🚗 Calxin Auto Mombasa</h1>
+        <p>Complete Project Hub & Navigation Center</p>
+        <div class="tagline">
+            <p>All tools, features, and resources in one place</p>
+            <p><strong>Email: calxinkenya147@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Main Navigation Section -->
+        <div class="section">
+            <h2><i class="fas fa-home"></i> Main Pages</h2>
+            <div class="links-grid">
+                <a href="project.html" class="link-card">
+                    <i class="fas fa-home card-icon"></i>
+                    <span class="card-title">Home Page</span>
+                    <span class="card-description">Browse all products and services</span>
+                    <button class="btn-visit">Visit</button>
+                </a>
+
+                <a href="stock-gallery.html" class="link-card">
+                    <i class="fas fa-images card-icon"></i>
+                    <span class="card-title">Stock Gallery <span class="badge new">NEW</span></span>
+                    <span class="card-description">View products by category with multiple images</span>
+                    <button class="btn-visit">Visit</button>
+                </a>
+
+                <a href="About (2).html" class="link-card">
+                    <i class="fas fa-info-circle card-icon"></i>
+                    <span class="card-title">About Us</span>
+                    <span class="card-description">Learn about Calxin Auto Mombasa</span>
+                    <button class="btn-visit">Visit</button>
+                </a>
+
+                <a href="Contact (1).html" class="link-card">
+                    <i class="fas fa-envelope card-icon"></i>
+                    <span class="card-title">Contact Us</span>
+                    <span class="card-description">Get in touch with our team</span>
+                    <button class="btn-visit">Visit</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Admin & Management Section -->
+        <div class="section">
+            <h2><i class="fas fa-tachometer-alt"></i> Admin & Management</h2>
+            <div class="links-grid">
+                <a href="admin.html" class="link-card">
+                    <i class="fas fa-cog card-icon"></i>
+                    <span class="card-title">Admin Panel <span class="badge updated">UPDATED</span></span>
+                    <span class="card-description">Manage products, images, and posts</span>
+                    <button class="btn-visit">Access</button>
+                </a>
+
+                <a href="share-gallery.html" class="link-card">
+                    <i class="fas fa-share-alt card-icon"></i>
+                    <span class="card-title">Share Gallery <span class="badge new">NEW</span></span>
+                    <span class="card-description">Generate and share gallery links</span>
+                    <button class="btn-visit">Access</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3><i class="fas fa-lightbulb"></i> Quick Tips</h3>
+            <p><strong>Admin Panel:</strong> Use admin.html to add products, upload images, and manage content</p>
+            <p><strong>Gallery:</strong> stock-gallery.html displays all products organized by category</p>
+            <p><strong>Sharing:</strong> Use share-gallery.html to create shareable links for customers</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Documentation Section -->
+        <div class="section">
+            <h2><i class="fas fa-book"></i> Documentation & Guides</h2>
+            
+            <div class="info-box">
+                <h3>📚 Quick Start Guides</h3>
+                <p><strong>START_HERE.txt:</strong> Begin with this 2-minute overview</p>
+                <p><strong>QUICK_START.txt:</strong> 5-minute getting started guide</p>
+                <p><strong>SYSTEM_UPDATES.md:</strong> Complete list of new features</p>
+                <p><strong>GALLERY_USER_GUIDE.md:</strong> Comprehensive user instructions</p>
+            </div>
+
+            <div class="info-box">
+                <h3>🔧 Technical Documentation</h3>
+                <p><strong>IMPLEMENTATION_STATUS.md:</strong> Technical implementation details</p>
+                <p><strong>FEATURE_CHECKLIST.md:</strong> Complete feature list and verification</p>
+                <p><strong>FINAL_REPORT.md:</strong> Project completion summary</p>
+                <p><strong>MAIN_README.md:</strong> Main project documentation</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Features Section -->
+        <div class="section">
+            <h2><i class="fas fa-star"></i> Key Features</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div class="info-box">
+                    <h3><i class="fas fa-cube"></i> Product Management</h3>
+                    <p>✅ Add/Edit/Delete products</p>
+                    <p>✅ Organize by 18 categories</p>
+                    <p>✅ Track stock quantities</p>
+                    <p>✅ Set prices and ratings</p>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-image"></i> Image Management</h3>
+                    <p>✅ Upload multiple images</p>
+                    <p>✅ Edit image properties</p>
+                    <p>✅ Delete images</p>
+                    <p>✅ Organize by category</p>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-link"></i> Link Sharing</h3>
+                    <p>✅ Generate gallery links</p>
+                    <p>✅ Custom category links</p>
+                    <p>✅ Email templates</p>
+                    <p>✅ Campaign tracking</p>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-mobile"></i> Responsive Design</h3>
+                    <p>✅ Mobile friendly</p>
+                    <p>✅ Tablet optimized</p>
+                    <p>✅ Desktop compatible</p>
+                    <p>✅ All browsers supported</p>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-check"></i> Admin Features</h3>
+                    <p>✅ Dashboard statistics</p>
+                    <p>✅ Manage posts</p>
+                    <p>✅ View gallery</p>
+                    <p>✅ Professional interface</p>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-lock"></i> Data Management</h3>
+                    <p>✅ Auto-save data</p>
+                    <p>✅ Category grouping</p>
+                    <p>✅ Quick search</p>
+                    <p>✅ Easy organization</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Footer Section with Contact Info -->
+        <div class="footer-section">
+            <h3><i class="fas fa-phone"></i> Contact & Support</h3>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>🏢 Company Email</h4>
+                    <p>Calxin Auto Mombasa</p>
+                    <p><a href="mailto:calxinkenya147@gmail.com">calxinkenya147@gmail.com</a></p>
+                    <p style="font-size: 0.85rem; color: #999;">For general inquiries</p>
+                </div>
+
+                <div class="contact-card">
+                    <h4>👨‍💼 Purice Mwero</h4>
+                    <p>Designer & Developer</p>
+                    <p><a href="mailto:kaka@gmail.com">kaka@gmail.com</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <h4>👨‍💼 Hiram Ngatia</h4>
+                    <p>Designer & Developer</p>
+                    <p><a href="mailto:hiracharagu@gmail.com">hiracharagu@gmail.com</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <h4>👩‍💼 Purine Mwero</h4>
+                    <p>Designer & Developer</p>
+                    <p><a href="mailto:designerpurine@gmail.com">designerpurine@gmail.com</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <h4>📞 Phone</h4>
+                    <p>Calxin Auto Mombasa</p>
+                    <p>+254 700 123 456</p>
+                </div>
+
+                <div class="contact-card">
+                    <h4>📍 Location</h4>
+                    <p>Mombasa, Kenya</p>
+                    <p style="font-size: 0.85rem; color: #999;">East Africa</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; text-align: center; padding-top: 30px; border-top: 2px solid #e0e0e0;">
+                <p style="color: #666; font-size: 0.95rem;">
+                    <strong>Calxin Auto Mombasa Project Hub</strong><br>
+                    Created by Purice Mwero, Hiram Ngatia & Purine Mwero<br>
+                    Version 2.1 | January 25, 2026<br>
+                    <span style="color: #0077be; font-weight: 600;">✅ Production Ready</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({behavior: 'smooth'});
+            }
+        });
+    });
+
+    // Log page load
+    console.log('Calxin Auto Mombasa Project Hub Loaded');
+    console.log('Version: 2.1');
+    console.log('Status: Production Ready');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Calxin Auto Mombasa</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+
+<div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="admin-header">
+            <h2><i class="fas fa-tachometer-alt"></i> Admin Panel</h2>
+        </div>
+        <nav class="admin-nav">
+            <a href="#" class="nav-item active" onclick="showSection('dashboard')">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </a>
+            <a href="#" class="nav-item" onclick="showSection('products')">
+                <i class="fas fa-cube"></i> Manage Products
+            </a>
+            <a href="#" class="nav-item" onclick="showSection('posts')">
+                <i class="fas fa-newspaper"></i> Manage Posts
+            </a>
+            <a href="#" class="nav-item" onclick="showSection('images')">
+                <i class="fas fa-images"></i> Manage Images
+            </a>
+            <a href="project.html" class="nav-item logout">
+                <i class="fas fa-sign-out-alt"></i> Back to Site
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="section-header">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-cube"></i></div>
+                    <div class="stat-info">
+                        <h3>Total Products</h3>
+                        <p id="totalProducts">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
+                    <div class="stat-info">
+                        <h3>Total Posts</h3>
+                        <p id="totalPosts">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-image"></i></div>
+                    <div class="stat-info">
+                        <h3>Total Images</h3>
+                        <p id="totalImages">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <h3>Quick Actions</h3>
+                        <p>3 Available</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Management Section -->
+        <section id="products" class="section">
+            <div class="section-header">
+                <h1>Manage Products</h1>
+                <button class="btn btn-primary" onclick="showAddProductForm()">
+                    <i class="fas fa-plus"></i> Add New Product
+                </button>
+            </div>
+
+            <!-- Add/Edit Product Form -->
+            <div id="productForm" class="form-container" style="display: none;">
+                <h2>Add/Edit Product</h2>
+                <form onsubmit="saveProduct(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Product Name *</label>
+                            <input type="text" id="productName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Price (KES) *</label>
+                            <input type="number" id="productPrice" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <select id="productCategory" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Stock Quantity *</label>
+                            <input type="number" id="productStock" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL/Path</label>
+                        <input type="text" id="productImage" placeholder="e.g., images.Calxin/product.jpeg">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="productDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating (0-5)</label>
+                        <input type="number" id="productRating" min="0" max="5" step="0.1">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-success">Save Product</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideAddProductForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Products List -->
+            <div class="table-container">
+                <table id="productsTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price (KES)</th>
+                            <th>Stock</th>
+                            <th>Rating</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Posts Management Section -->
+        <section id="posts" class="section">
+            <div class="section-header">
+                <h1>Manage Posts</h1>
+                <button class="btn btn-primary" onclick="showAddPostForm()">
+                    <i class="fas fa-plus"></i> Add New Post
+                </button>
+            </div>
+
+            <!-- Add/Edit Post Form -->
+            <div id="postForm" class="form-container" style="display: none;">
+                <h2>Add/Edit Post</h2>
+                <form onsubmit="savePost(event)">
+                    <div class="form-group">
+                        <label>Post Title *</label>
+                        <input type="text" id="postTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Post Content *</label>
+                        <textarea id="postContent" rows="6" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Featured Image URL</label>
+                        <input type="text" id="postImage" placeholder="e.g., images.Calxin/post.jpeg">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-success">Save Post</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideAddPostForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Posts List -->
+            <div class="table-container">
+                <table id="postsTable">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date Created</th>
+                            <th>Preview</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="postsTableBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Images Management Section -->
+        <section id="images" class="section">
+            <div class="section-header">
+                <h1>Manage Images</h1>
+                <button class="btn btn-primary" onclick="showUploadImageForm()">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload Image
+                </button>
+            </div>
+
+            <!-- Upload Image Form -->
+            <div id="imageForm" class="form-container" style="display: none;">
+                <h2>Upload Image</h2>
+                <form onsubmit="saveImage(event)">
+                    <div class="form-group">
+                        <label>Image Name *</label>
+                        <input type="text" id="imageName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Image File *</label>
+                        <input type="file" id="imageFile" accept="image/*" required>
+                        <small>Supported: JPG, PNG, GIF, WebP</small>
+                    </div>
+                    <div class="form-group" id="imagePreviewContainer" style="display: none;">
+                        <label>Image Preview:</label>
+                        <img id="imagePreview" src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 8px; margin-top: 10px;">
+                    </div>
+                    <div class="form-group">
+                        <label>Image Category</label>
+                        <select id="imageCategory">
+                            <option value="product">Product</option>
+                            <option value="post">Post</option>
+                            <option value="gallery">Gallery</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-success">Upload & Save Image</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideUploadImageForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Images Gallery -->
+            <div class="images-gallery" id="imagesGallery">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Admin Footer -->
+    <footer class="admin-footer">
+        <p>&copy; 2026 Calxin Auto Mombasa Admin Panel</p>
+        <p>Designed by Purice Mwero, Hiram Ngatia, and Purine Mwero</p>
+    </footer>
+</div>
+
+<script src="admin.js" defer></script>
+</body>
+</html>

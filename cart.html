@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Calxin Auto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>🚗 Calxin Auto</h1>
+            </div>
+            <div class="nav-links">
+                <a href="project.html">Home</a>
+                <a href="About (2).html">About</a>
+                <a href="Contact (1).html">Contact</a>
+                <a href="wishlist.html">Wishlist</a>
+                <a href="admin.html">Admin</a>
+                <a href="cart.html" class="active">Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="project.html">Home</a> / 
+        <span>Shopping Cart</span>
+    </div>
+
+    <div class="container">
+        <div class="cart-wrapper">
+            <!-- Cart Items Section -->
+            <div class="cart-items-section">
+                <h1>Shopping Cart</h1>
+                <div class="cart-items" id="cartItemsContainer">
+                    <!-- Cart items will load here -->
+                </div>
+                <div id="emptyCartMessage" class="empty-cart" style="display: none;">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Your cart is empty</h2>
+                    <p>Start shopping to add items to your cart</p>
+                    <a href="project.html" class="btn btn-primary">Continue Shopping</a>
+                </div>
+            </div>
+
+            <!-- Cart Summary Section -->
+            <div class="cart-summary-section">
+                <div class="cart-summary">
+                    <h2>Order Summary</h2>
+
+                    <div class="summary-item">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">KES 0</span>
+                    </div>
+
+                    <div class="summary-item">
+                        <span>Delivery Fee:</span>
+                        <span id="deliveryFee">KES 0</span>
+                    </div>
+
+                    <div class="summary-item">
+                        <span>Discount:</span>
+                        <span id="discount" class="discount-text">KES 0</span>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-item total">
+                        <span>Total:</span>
+                        <span id="total">KES 0</span>
+                    </div>
+
+                    <div class="promo-code">
+                        <input type="text" id="promoCode" placeholder="Enter promo code">
+                        <button onclick="applyPromoCode()" class="btn-promo">Apply</button>
+                    </div>
+
+                    <button class="btn btn-checkout" onclick="checkout()">
+                        <i class="fas fa-check-circle"></i> Proceed to Checkout
+                    </button>
+
+                    <a href="project.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Continue Shopping
+                    </a>
+                </div>
+
+                <!-- Delivery Options -->
+                <div class="delivery-options">
+                    <h3>Delivery Options</h3>
+                    <label class="delivery-option">
+                        <input type="radio" name="delivery" value="0" checked>
+                        <span>Pickup at Store</span>
+                        <span class="price">FREE</span>
+                    </label>
+                    <label class="delivery-option">
+                        <input type="radio" name="delivery" value="500">
+                        <span>Home Delivery (Mombasa)</span>
+                        <span class="price">KES 500</span>
+                    </label>
+                    <label class="delivery-option">
+                        <input type="radio" name="delivery" value="1500">
+                        <span>Express Delivery (24hrs)</span>
+                        <span class="price">KES 1,500</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suggested Products -->
+    <div class="suggested-section">
+        <h2>You Might Also Like</h2>
+        <div class="suggested-grid" id="suggestedProducts">
+            <!-- Suggested products will load here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>Calxin Auto Mombasa is your trusted partner in premium vehicles and auto solutions since 2020.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="project.html">Home</a></li>
+                    <li><a href="About (2).html">About</a></li>
+                    <li><a href="Contact (1).html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>Email: calxinkenya147@gmail.com</p>
+                <p>Phone: +254 700 123 456</p>
+                <p>Location: Mombasa, Kenya</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Calxin Auto Mombasa. All rights reserved.</p>
+            <p><strong>Designed by:</strong></p>
+                <p>Purice Mwero - <a href="mailto:puricekaka@gmail.com" style="color: #a8d8ff; text-decoration: none;">puricekaka@gmail.com</a></p>
+            <p>Hiram Ngatia - <a href="mailto:hiracharagu@gmail.com" style="color: #a8d8ff; text-decoration: none;">hiracharagu@gmail.com</a></p>
+            <p>Purine Mwero - <a href="mailto:designerpurine@gmail.com" style="color: #a8d8ff; text-decoration: none;">designerpurine@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+</body>
+
+</html>
