@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Calxin Auto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="product-view.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="project (6).html"><h1>🚗 Calxin Auto</h1></a>
+            </div>
+            <div class="nav-links">
+                <a href="project (6).html">Home</a>
+                <a href="About (2).html">About</a>
+                <a href="Contact (1).html">Contact</a>
+                <a href="admin.html">Admin</a>
+                <a href="cart.html">Cart</a>
+                <a href="wishlist.html">Wishlist</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="project (6).html">Home</a> / 
+        <span id="breadcrumbName">Product</span>
+    </div>
+
+    <div class="container">
+        <div class="product-container">
+            <!-- Product Image Section -->
+            <div class="product-image-section">
+                <div class="main-image">
+                    <img id="mainImage" src="" alt="Product">
+                </div>
+            </div>
+
+            <!-- Product Details Section -->
+            <div class="product-details-section">
+                <h1 id="productName">Product Name</h1>
+                <p class="category" id="productCategory">Category</p>
+                
+                <div class="rating-section">
+                    <p class="rating" id="productRating">⭐ 4.5</p>
+                    <p class="stock" id="productStock">20 in Stock</p>
+                </div>
+
+                <div class="price-section">
+                    <h2 id="productPrice" class="price">KES 0</h2>
+                    <p class="original-price" id="originalPrice"></p>
+                </div>
+
+                <div class="description-section">
+                    <h3>Product Details</h3>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Category:</span>
+                            <span id="specCategory" class="spec-value">-</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Price:</span>
+                            <span id="specPrice" class="spec-value">-</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Stock:</span>
+                            <span id="specStock" class="spec-value">-</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Rating:</span>
+                            <span id="specRating" class="spec-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-section">
+                    <div class="quantity-selector">
+                        <label for="quantity">Quantity:</label>
+                        <div class="quantity-input">
+                            <button onclick="decreaseQuantity()">-</button>
+                            <input type="number" id="quantity" value="1" min="1" readonly>
+                            <button onclick="increaseQuantity()">+</button>
+                        </div>
+                    </div>
+
+                    <button class="btn-add-cart" onclick="addProductToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn-wishlist" id="wishlistBtn" onclick="toggleWishlist()">
+                        <i class="far fa-heart"></i> <span id="wishlistText">Add to Wishlist</span>
+                    </button>
+                </div>
+
+                <div class="info-section">
+                    <p><i class="fas fa-truck"></i> <strong>Free Delivery</strong> on orders over KES 50,000</p>
+                    <p><i class="fas fa-shield-alt"></i> <strong>Genuine Products</strong> - All vehicles are verified</p>
+                    <p><i class="fas fa-undo"></i> <strong>7 Days Return</strong> - No questions asked</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="related-section">
+            <h2>Related Products in <span id="relatedCategory"></span></h2>
+            <div class="related-products" id="relatedProducts">
+                <!-- Related products will load here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>Calxin Auto Mombasa is your trusted partner in premium vehicles and auto solutions since 2020.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="project (6).html">Home</a></li>
+                    <li><a href="About (2).html">About</a></li>
+                    <li><a href="Contact (1).html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>Email: calxinkenya147@gmail.com</p>
+                <p>Phone: +254 700 123 456</p>
+                <p>Location: Mombasa, Kenya</p>
+            </div>
+            <div class="footer-section">
+                <h4>Designed By</h4>
+                <p>Purice Mwero - <a href="mailto:puricekaka@gmail.com" style="color: #a8d8ff; text-decoration: none;">puricekaka@gmail.com</a></p>
+                <p>Hiram Ngatia - <a href="mailto:hiracharagu@gmail.com" style="color: #a8d8ff; text-decoration: none;">hiracharagu@gmail.com</a></p>
+                <p>Purine Mwero - <a href="mailto:designerpurine@gmail.com" style="color: #a8d8ff; text-decoration: none;">designerpurine@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Calxin Auto Mombasa. All rights reserved.</p>
+            <p>Designed by Purice</p>
+        </div>
+    </footer>
+
+    <script src="product-view.js"></script>
+</body>
+</html>
