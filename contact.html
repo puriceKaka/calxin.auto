@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Calxin Auto Mombasa</title>
     <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="project (1).css">
+    <link rel="stylesheet" href="project.css">
     <script src=\"contact.js\" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -26,13 +26,13 @@
         <nav class="header-nav">
             <ul>
                 <li><a href="index.html" class="nav-link" data-section="home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#" onclick="navigateTo('about')" class="nav-link" data-section="about"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#" onclick="navigateTo('contact')" class="nav-link active" data-section="contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li><a href="#" onclick="showSignIn()" class="nav-link" data-section="signin"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+                <li><a href="about.html" class="nav-link" data-section="about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html" class="nav-link active" data-section="contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="login.html" class="nav-link" data-section="signin"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
             </ul>
         </nav>
 
-        <div class="cart-icon" onclick="showCart()">
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
             <i class="fas fa-shopping-cart"></i>
             <span id="cart-count">0</span>
         </div>
@@ -131,6 +131,25 @@
                     <div class="form-group">
                         <label for="vehicleType">Vehicle Type/Model *</label>
                         <input type="text" id="vehicleType" name="vehicleType" placeholder="e.g., Toyota Land Cruiser, BMW X5">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="spareParts">Spare Parts *</label>
+                        <select id="spareParts" name="spareParts" multiple size="6">
+                            <option value="Engine Parts">Engine Parts (Oil, Filters, Gaskets, Belts)</option>
+                            <option value="Brake System">Brake System (Pads, Rotors, Calipers)</option>
+                            <option value="Suspension">Suspension (Springs, Shocks, Bearings)</option>
+                            <option value="Tire & Wheels">Tires & Wheels (New/Used, All Sizes)</option>
+                            <option value="Electrical">Electrical (Alternators, Starters, Batteries)</option>
+                            <option value="Cooling System">Cooling System (Radiators, Water Pumps)</option>
+                            <option value="Transmission">Transmission Parts (Gearbox, Torque Converter)</option>
+                            <option value="Interior Trim">Interior Trim & Accessories</option>
+                            <option value="Audio & Navigation">Audio & Navigation Systems</option>
+                            <option value="Lights">Headlights, Taillights & Fixtures</option>
+                            <option value="Paint & Body">Paint & Body Repair Materials</option>
+                            <option value="Performance Parts">Performance & Tuning Parts</option>
+                        </select>
+                        <small style="color: #999; display: block; margin-top: 5px;">Hold Ctrl/Cmd to select multiple parts</small>
                     </div>
 
                     <div class="form-group">

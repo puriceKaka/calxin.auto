@@ -133,6 +133,20 @@
     transition: border-color 0.3s ease;
 }
 
+.form-group select[multiple] {
+    min-height: 150px;
+}
+
+.form-group select[multiple] option {
+    padding: 8px 5px;
+    color: #333;
+}
+
+.form-group select[multiple] option:checked {
+    background: linear-gradient(#0077be, #0077be);
+    color: white;
+}
+
 .form-group select:focus {
     outline: none;
     border-color: #0077be;
