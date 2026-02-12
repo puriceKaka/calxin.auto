@@ -5,12 +5,51 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDeliveryOptions();
 });
 
-const PORTAL_PRODUCTS = [
-    { id: 1, name: "Engine Assembly Complete", price: 45000, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg" },
-    { id: 2, name: "Transmission Automatic", price: 38000, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.23 PM.jpeg" },
-    { id: 3, name: "Brake Pads Set", price: 2500, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.26 PM.jpeg" },
-    { id: 4, name: "Car Battery 12V 100A", price: 8500, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.27 PM.jpeg" }
+const AVAILABLE_IMAGE_FILES = [
+    "WhatsApp Image 2026-01-23 at 4.58.19 PM (1).jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.23 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.26 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.27 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.31 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.35 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.37 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.42 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.44 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.45 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.46 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.47 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.50 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.53 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.55 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.59 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.59.00 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.59.04 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.46 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.48 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.49 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.56 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.58 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.00 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.01 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.02 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.03 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.06 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.07 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.09 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.12 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.13 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.14 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.16 PM.jpeg"
 ];
+
+const PORTAL_PRODUCTS = AVAILABLE_IMAGE_FILES.map((file, index) => ({
+    id: index + 1,
+    name: `Auto Part ${index + 1}`,
+    price: 1000 + (index * 250),
+    image: encodeURI(`calxin.images/${file}`)
+}));
 
 function resolveImagePath(path) {
     const image = String(path || "").replace("images.Calxin/", "calxin.images/");
