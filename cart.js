@@ -209,7 +209,7 @@ Thank you for your order!`;
 
     // Redirect to home
     setTimeout(() => {
-        window.location.href = 'project.html';
+        window.location.href = 'index.html';
     }, 500);
 }
 

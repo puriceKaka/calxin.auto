@@ -3,11 +3,11 @@
 // ================================
 function navigateTo(page) {
     if(page === 'home') {
-        window.location.href = 'project.html';
+        window.location.href = 'index.html';
     } else if(page === 'about') {
-        window.location.href = 'About (2).html';
+        window.location.href = 'about.html';
     } else if(page === 'contact') {
-        window.location.href = 'Contact (1).html';
+        window.location.href = 'contact.html';
     } else if(page === 'admin') {
         window.location.href = 'admin.html';
     }

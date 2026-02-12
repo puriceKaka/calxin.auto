@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loadRelatedProducts();
         checkWishlist();
     } else {
-        window.location.href = 'project.html';
+        window.location.href = 'index.html';
     }
 });
 
