@@ -102,7 +102,7 @@ function filterByCategory(category) {
         const stockText = vehicle.stock > 0 ? `${vehicle.stock} in stock` : "Out of stock";
         
         html += `
-        <div class="card" style="animation: fadeIn 0.6s ease ${index * 0.05}s forwards; opacity: 0;">
+        <div class="card" style="opacity: 1;">
             <div class="card-image-wrapper">
                 <img src="${vehicle.image}" alt="${vehicle.name}" onerror="this.src='https://via.placeholder.com/200?text=${vehicle.name}'">
                 <span class="stock-badge ${stockClass}">${stockText}</span>
@@ -724,8 +724,7 @@ document.addEventListener("DOMContentLoaded", function(){
         categories.forEach((cat, index) => {
             const li = document.createElement("li");
             li.textContent = cat;
-            li.style.animation = `slideInLeft 0.3s ease ${index * 0.05}s forwards`;
-            li.style.opacity = "0";
+            li.style.opacity = "1";
             li.style.cursor = "pointer";
             li.onclick = function() {
                 // Close side menu when category is clicked
@@ -757,8 +756,7 @@ document.addEventListener("DOMContentLoaded", function(){
         vehicles.forEach((vehicle, index) => {
             const card = document.createElement("div");
             card.classList.add("card");
-            card.style.animation = `fadeIn 0.6s ease ${index * 0.05}s forwards`;
-            card.style.opacity = "0";
+            card.style.opacity = "1";
 
             // Create stock status badge
             const stockClass = vehicle.stock > 20 ? "stock-high" : vehicle.stock > 10 ? "stock-medium" : "stock-low";
