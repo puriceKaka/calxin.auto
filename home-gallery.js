@@ -8,7 +8,7 @@ const products = [
         price: 2500000,
         category: "SUVs",
         stock: 12,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.08 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.08 PM.jpeg",
         rating: 4.8
     },
     {
@@ -17,7 +17,7 @@ const products = [
         price: 1800000,
         category: "Sedans",
         stock: 25,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.09 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.09 PM.jpeg",
         rating: 4.6
     },
     {
@@ -26,7 +26,7 @@ const products = [
         price: 3500000,
         category: "Sports",
         stock: 5,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.16 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.16 PM.jpeg",
         rating: 4.9
     },
     {
@@ -35,7 +35,7 @@ const products = [
         price: 2200000,
         category: "Vans",
         stock: 18,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.18 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.18 PM.jpeg",
         rating: 4.5
     },
     {
@@ -44,7 +44,7 @@ const products = [
         price: 4200000,
         category: "SUVs",
         stock: 9,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg",
         rating: 4.7
     },
     {
@@ -53,7 +53,7 @@ const products = [
         price: 2800000,
         category: "Trucks",
         stock: 14,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.23 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.23 PM.jpeg",
         rating: 4.4
     },
     {
@@ -62,7 +62,7 @@ const products = [
         price: 3200000,
         category: "Sedans",
         stock: 8,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.26 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.26 PM.jpeg",
         rating: 4.8
     },
     {
@@ -71,7 +71,7 @@ const products = [
         price: 1500000,
         category: "Hatchbacks",
         stock: 20,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.27 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.27 PM.jpeg",
         rating: 4.3
     },
     {
@@ -80,7 +80,7 @@ const products = [
         price: 4500000,
         category: "Sports",
         stock: 3,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.30 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.30 PM.jpeg",
         rating: 4.9
     },
     {
@@ -89,7 +89,7 @@ const products = [
         price: 2100000,
         category: "SUVs",
         stock: 15,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.31 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.31 PM.jpeg",
         rating: 4.7
     },
     {
@@ -98,7 +98,7 @@ const products = [
         price: 2400000,
         category: "Vans",
         stock: 11,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.34 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.34 PM.jpeg",
         rating: 4.5
     },
     {
@@ -107,7 +107,7 @@ const products = [
         price: 1200000,
         category: "Sedans",
         stock: 30,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.35 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.35 PM.jpeg",
         rating: 4.2
     },
     {
@@ -116,7 +116,7 @@ const products = [
         price: 5200000,
         category: "SUVs",
         stock: 2,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.37 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.37 PM.jpeg",
         rating: 4.9
     },
     {
@@ -125,7 +125,7 @@ const products = [
         price: 3800000,
         category: "Trucks",
         stock: 6,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg",
         rating: 4.8
     },
     {
@@ -134,7 +134,7 @@ const products = [
         price: 1900000,
         category: "Sedans",
         stock: 22,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.40 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.40 PM.jpeg",
         rating: 4.6
     },
     {
@@ -143,7 +143,7 @@ const products = [
         price: 1700000,
         category: "SUVs",
         stock: 28,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.42 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.42 PM.jpeg",
         rating: 4.4
     },
     {
@@ -152,7 +152,7 @@ const products = [
         price: 5800000,
         category: "Sports",
         stock: 1,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.44 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.44 PM.jpeg",
         rating: 5.0
     },
     {
@@ -161,7 +161,7 @@ const products = [
         price: 2300000,
         category: "Trucks",
         stock: 10,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.45 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.45 PM.jpeg",
         rating: 4.3
     },
     {
@@ -170,7 +170,7 @@ const products = [
         price: 3100000,
         category: "Sports",
         stock: 4,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.46 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.46 PM.jpeg",
         rating: 4.7
     },
     {
@@ -179,7 +179,7 @@ const products = [
         price: 1950000,
         category: "Hatchbacks",
         stock: 18,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.47 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.47 PM.jpeg",
         rating: 4.5
     },
     {
@@ -188,7 +188,7 @@ const products = [
         price: 4800000,
         category: "SUVs",
         stock: 5,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.49 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.49 PM.jpeg",
         rating: 4.8
     },
     {
@@ -197,10 +197,61 @@ const products = [
         price: 2600000,
         category: "Sedans",
         stock: 12,
-        image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.50 PM.jpeg",
+        image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.50 PM.jpeg",
         rating: 4.6
     }
 ];
+
+const availableImageFiles = [
+    "WhatsApp Image 2026-01-23 at 4.58.19 PM (1).jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.23 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.26 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.27 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.31 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.35 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.37 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.42 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.44 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.45 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.46 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.47 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.50 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.53 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.55 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.59 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.59.00 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.59.04 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.46 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.48 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.49 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.56 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.58 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.00 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.01 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.02 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.03 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.06 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.07 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.09 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.12 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.13 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.14 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.16 PM.jpeg"
+];
+
+function resolveProductImage(path, index) {
+    const rawName = (path || "").split("/").pop();
+    if (rawName && availableImageFiles.includes(rawName)) {
+        return `calxin.images/${rawName}`;
+    }
+    return `calxin.images/${availableImageFiles[index % availableImageFiles.length]}`;
+}
+
+products.forEach((product, index) => {
+    product.image = resolveProductImage(product.image, index);
+});
 
 let currentFilter = 'all';
 

@@ -32,6 +32,42 @@ function toggleMenu() {
     }
 }
 
+// Mobile Navigation Menu Toggle
+function toggleMobileNav() {
+    const navMenu = document.getElementById("navMenuMobile");
+    const header = document.querySelector(".header");
+    if (navMenu) {
+        navMenu.classList.toggle("active");
+        header.classList.toggle("menu-open");
+    }
+}
+
+// Close Mobile Navigation Menu
+function closeMobileNav() {
+    const navMenu = document.getElementById("navMenuMobile");
+    const header = document.querySelector(".header");
+    if (navMenu) {
+        navMenu.classList.remove("active");
+        header.classList.remove("menu-open");
+    }
+}
+
+// Close menu when clicking outside
+document.addEventListener("click", function(e) {
+    const navMenu = document.getElementById("navMenuMobile");
+    const hamburger = document.querySelector(".hamburger");
+    const header = document.querySelector(".header");
+    
+    if (navMenu && hamburger && header) {
+        if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+            if (navMenu.classList.contains("active")) {
+                navMenu.classList.remove("active");
+                header.classList.remove("menu-open");
+            }
+        }
+    }
+});
+
 function navigateToSection(section) {
     // Remove active class from all nav links
     document.querySelectorAll(".nav-link").forEach(link => {
@@ -460,8 +496,12 @@ document.addEventListener("DOMContentLoaded", function(){
 // ================================
 function toggleMenu() {
     const menu = document.getElementById("sideMenu");
+    const header = document.querySelector(".header");
     if(menu) {
         menu.classList.toggle("active");
+        if (header) {
+            header.classList.toggle("menu-open");
+        }
     }
 }
 
@@ -469,14 +509,18 @@ function toggleMenu() {
 document.addEventListener("click", function(e){
     const menu = document.getElementById("sideMenu");
     const burger = document.querySelector(".hamburger");
+    const header = document.querySelector(".header");
     if(menu && burger && !menu.contains(e.target) && !burger.contains(e.target)){
         menu.classList.remove("active");
+        if (header) {
+            header.classList.remove("menu-open");
+        }
     }
 });
 
 // Add click functionality to side menu categories
 document.addEventListener("DOMContentLoaded", function(){
-    const categoryItems = document.querySelectorAll(".side-menu ul li");
+    const categoryItems = document.querySelectorAll("#categoryList > li");
     categoryItems.forEach(item => {
         if(item.textContent.trim() !== "" && item.tagName !== "HR") {
             item.addEventListener("click", function(){
@@ -514,54 +558,105 @@ document.addEventListener("keydown", function(e){
 // SPARE PARTS DATA
 // ================================
 const vehicles = [
-    { name: "Engine Assembly Complete", price: 45000, category: "Engines", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.08 PM.jpeg", stock: 12, rating: 4.8 },
-    { name: "Transmission Automatic", price: 38000, category: "Transmissions", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.09 PM.jpeg", stock: 8, rating: 4.7 },
-    { name: "Brake Pads Set", price: 2500, category: "Brakes", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.16 PM.jpeg", stock: 45, rating: 4.9 },
-    { name: "Brake Rotors Pair", price: 5800, category: "Brakes", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.18 PM.jpeg", stock: 32, rating: 4.6 },
-    { name: "Car Battery 12V 100A", price: 8500, category: "Electrical", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg", stock: 28, rating: 4.8 },
-    { name: "Alternator Genuine", price: 12000, category: "Electrical", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.23 PM.jpeg", stock: 15, rating: 4.7 },
-    { name: "Starter Motor", price: 9500, category: "Electrical", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.26 PM.jpeg", stock: 18, rating: 4.5 },
-    { name: "Water Pump Assembly", price: 6800, category: "Cooling", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.27 PM.jpeg", stock: 22, rating: 4.6 },
-    { name: "Radiator Complete", price: 11500, category: "Cooling", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.30 PM.jpeg", stock: 14, rating: 4.7 },
-    { name: "Thermostat Housing", price: 3200, category: "Cooling", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.31 PM.jpeg", stock: 35, rating: 4.8 },
-    { name: "Air Filter Kit", price: 1500, category: "Filters", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.34 PM.jpeg", stock: 50, rating: 4.9 },
-    { name: "Oil Filter", price: 800, category: "Filters", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.35 PM.jpeg", stock: 60, rating: 5.0 },
-    { name: "Cabin Air Filter", price: 1200, category: "Filters", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.37 PM.jpeg", stock: 40, rating: 4.7 },
-    { name: "Spark Plugs Set 4", price: 2800, category: "Ignition", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg", stock: 48, rating: 4.8 },
-    { name: "Coil Pack", price: 4500, category: "Ignition", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.40 PM.jpeg", stock: 20, rating: 4.6 },
-    { name: "Fuel Pump", price: 7800, category: "Fuel System", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.42 PM.jpeg", stock: 16, rating: 4.7 },
-    { name: "Fuel Filter", price: 1800, category: "Fuel System", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.44 PM.jpeg", stock: 42, rating: 4.9 },
-    { name: "Fuel Injector Set", price: 6200, category: "Fuel System", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.45 PM.jpeg", stock: 12, rating: 4.8 },
-    { name: "Suspension Springs Pair", price: 8900, category: "Suspension", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.46 PM.jpeg", stock: 18, rating: 4.6 },
-    { name: "Shock Absorbers Pair", price: 7500, category: "Suspension", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.47 PM.jpeg", stock: 25, rating: 4.7 },
-    { name: "Stabilizer Link Kit", price: 3200, category: "Suspension", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.49 PM.jpeg", stock: 36, rating: 4.8 },
-    { name: "Steering Rack Assembly", price: 15000, category: "Steering", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.50 PM.jpeg", stock: 8, rating: 4.5 },
-    { name: "Tie Rod Ends Pair", price: 2800, category: "Steering", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.53 PM.jpeg", stock: 44, rating: 4.9 },
-    { name: "Tyre 175/65 R14", price: 4500, category: "Tyres", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.55 PM.jpeg", stock: 38, rating: 4.8 },
-    { name: "Tyre 195/55 R15", price: 5200, category: "Tyres", image: "images.Calxin/WhatsApp Image 2026-01-23 at 4.58.59 PM.jpeg", stock: 32, rating: 4.7 },
-    { name: "Alloy Wheel 16 inch", price: 9500, category: "Wheels", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.00 PM.jpeg", stock: 16, rating: 4.8 },
-    { name: "Car Wax Premium", price: 950, category: "Accessories", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.01 PM.jpeg", stock: 55, rating: 4.9 },
-    { name: "Floor Mats Set", price: 1800, category: "Accessories", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.03 PM.jpeg", stock: 42, rating: 4.7 },
-    { name: "Seat Covers Premium", price: 5500, category: "Accessories", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.05 PM.jpeg", stock: 24, rating: 4.8 },
-    { name: "Roof Rack Bars", price: 3800, category: "Accessories", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.06 PM.jpeg", stock: 20, rating: 4.6 },
-    { name: "Car Stereo System", price: 12500, category: "Audio", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.08 PM.jpeg", stock: 11, rating: 4.7 },
-    { name: "Reverse Camera Kit", price: 4200, category: "Audio", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.09 PM.jpeg", stock: 28, rating: 4.8 },
-    { name: "LED Headlights Pair", price: 8800, category: "Lighting", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.11 PM.jpeg", stock: 17, rating: 4.9 },
-    { name: "Tail Light Assembly", price: 3500, category: "Lighting", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.12 PM.jpeg", stock: 31, rating: 4.8 },
-    { name: "Windshield Wiper Blades", price: 1200, category: "Accessories", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.14 PM.jpeg", stock: 48, rating: 4.9 },
-    { name: "Car Door Lock Actuator", position: "Front Left", price: 2800, category: "Electrical", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.15 PM.jpeg", stock: 19, rating: 4.6 },
-    { name: "Window Regulator Motor", price: 3200, category: "Electrical", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.17 PM.jpeg", stock: 22, rating: 4.7 },
-    { name: "HVAC Compressor", price: 14500, category: "HVAC", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.18 PM.jpeg", stock: 9, rating: 4.8 },
-    { name: "Cabin Air Vents", price: 1500, category: "HVAC", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.20 PM.jpeg", stock: 36, rating: 4.7 },
-    { name: "Engine Oil 5L Synthetic", price: 2500, category: "Oils & Fluids", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.22 PM.jpeg", stock: 58, rating: 4.9 },
-    { name: "Coolant Concentrate 1L", price: 950, category: "Oils & Fluids", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.24 PM.jpeg", stock: 62, rating: 4.8 },
-    { name: "Brake Fluid 500ml", price: 650, category: "Oils & Fluids", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.25 PM.jpeg", stock: 55, rating: 5.0 },
-    { name: "Power Steering Fluid", price: 1100, category: "Oils & Fluids", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.27 PM.jpeg", stock: 48, rating: 4.9 },
-    { name: "Transmission Fluid", price: 1800, category: "Oils & Fluids", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.30 PM.jpeg", stock: 40, rating: 4.8 },
-    { name: "Jump Starter Pack", price: 3500, category: "Tools", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.31 PM.jpeg", stock: 26, rating: 4.8 },
-    { name: "Tool Set Complete", price: 8200, category: "Tools", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.33 PM.jpeg", stock: 14, rating: 4.7 },
-    { name: "Tire Repair Kit", price: 1200, category: "Tools", image: "images.Calxin/WhatsApp Image 2026-01-23 at 5.00.35 PM.jpeg", stock: 52, rating: 4.9 },
+    { name: "Engine Assembly Complete", price: 45000, category: "Engines", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.08 PM.jpeg", stock: 12, rating: 4.8 },
+    { name: "Transmission Automatic", price: 38000, category: "Transmissions", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.09 PM.jpeg", stock: 8, rating: 4.7 },
+    { name: "Brake Pads Set", price: 2500, category: "Brakes", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.16 PM.jpeg", stock: 45, rating: 4.9 },
+    { name: "Brake Rotors Pair", price: 5800, category: "Brakes", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.18 PM.jpeg", stock: 32, rating: 4.6 },
+    { name: "Car Battery 12V 100A", price: 8500, category: "Electrical", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg", stock: 28, rating: 4.8 },
+    { name: "Alternator Genuine", price: 12000, category: "Electrical", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.23 PM.jpeg", stock: 15, rating: 4.7 },
+    { name: "Starter Motor", price: 9500, category: "Electrical", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.26 PM.jpeg", stock: 18, rating: 4.5 },
+    { name: "Water Pump Assembly", price: 6800, category: "Cooling", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.27 PM.jpeg", stock: 22, rating: 4.6 },
+    { name: "Radiator Complete", price: 11500, category: "Cooling", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.30 PM.jpeg", stock: 14, rating: 4.7 },
+    { name: "Thermostat Housing", price: 3200, category: "Cooling", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.31 PM.jpeg", stock: 35, rating: 4.8 },
+    { name: "Air Filter Kit", price: 1500, category: "Filters", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.34 PM.jpeg", stock: 50, rating: 4.9 },
+    { name: "Oil Filter", price: 800, category: "Filters", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.35 PM.jpeg", stock: 60, rating: 5.0 },
+    { name: "Cabin Air Filter", price: 1200, category: "Filters", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.37 PM.jpeg", stock: 40, rating: 4.7 },
+    { name: "Spark Plugs Set 4", price: 2800, category: "Ignition", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg", stock: 48, rating: 4.8 },
+    { name: "Coil Pack", price: 4500, category: "Ignition", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.40 PM.jpeg", stock: 20, rating: 4.6 },
+    { name: "Fuel Pump", price: 7800, category: "Fuel System", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.42 PM.jpeg", stock: 16, rating: 4.7 },
+    { name: "Fuel Filter", price: 1800, category: "Fuel System", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.44 PM.jpeg", stock: 42, rating: 4.9 },
+    { name: "Fuel Injector Set", price: 6200, category: "Fuel System", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.45 PM.jpeg", stock: 12, rating: 4.8 },
+    { name: "Suspension Springs Pair", price: 8900, category: "Suspension", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.46 PM.jpeg", stock: 18, rating: 4.6 },
+    { name: "Shock Absorbers Pair", price: 7500, category: "Suspension", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.47 PM.jpeg", stock: 25, rating: 4.7 },
+    { name: "Stabilizer Link Kit", price: 3200, category: "Suspension", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.49 PM.jpeg", stock: 36, rating: 4.8 },
+    { name: "Steering Rack Assembly", price: 15000, category: "Steering", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.50 PM.jpeg", stock: 8, rating: 4.5 },
+    { name: "Tie Rod Ends Pair", price: 2800, category: "Steering", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.53 PM.jpeg", stock: 44, rating: 4.9 },
+    { name: "Tyre 175/65 R14", price: 4500, category: "Tyres", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.55 PM.jpeg", stock: 38, rating: 4.8 },
+    { name: "Tyre 195/55 R15", price: 5200, category: "Tyres", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.59 PM.jpeg", stock: 32, rating: 4.7 },
+    { name: "Alloy Wheel 16 inch", price: 9500, category: "Wheels", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.00 PM.jpeg", stock: 16, rating: 4.8 },
+    { name: "Car Wax Premium", price: 950, category: "Accessories", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.01 PM.jpeg", stock: 55, rating: 4.9 },
+    { name: "Floor Mats Set", price: 1800, category: "Accessories", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.03 PM.jpeg", stock: 42, rating: 4.7 },
+    { name: "Seat Covers Premium", price: 5500, category: "Accessories", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.05 PM.jpeg", stock: 24, rating: 4.8 },
+    { name: "Roof Rack Bars", price: 3800, category: "Accessories", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.06 PM.jpeg", stock: 20, rating: 4.6 },
+    { name: "Car Stereo System", price: 12500, category: "Audio", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.08 PM.jpeg", stock: 11, rating: 4.7 },
+    { name: "Reverse Camera Kit", price: 4200, category: "Audio", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.09 PM.jpeg", stock: 28, rating: 4.8 },
+    { name: "LED Headlights Pair", price: 8800, category: "Lighting", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.11 PM.jpeg", stock: 17, rating: 4.9 },
+    { name: "Tail Light Assembly", price: 3500, category: "Lighting", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.12 PM.jpeg", stock: 31, rating: 4.8 },
+    { name: "Windshield Wiper Blades", price: 1200, category: "Accessories", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.14 PM.jpeg", stock: 48, rating: 4.9 },
+    { name: "Car Door Lock Actuator", position: "Front Left", price: 2800, category: "Electrical", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.15 PM.jpeg", stock: 19, rating: 4.6 },
+    { name: "Window Regulator Motor", price: 3200, category: "Electrical", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.17 PM.jpeg", stock: 22, rating: 4.7 },
+    { name: "HVAC Compressor", price: 14500, category: "HVAC", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.18 PM.jpeg", stock: 9, rating: 4.8 },
+    { name: "Cabin Air Vents", price: 1500, category: "HVAC", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.20 PM.jpeg", stock: 36, rating: 4.7 },
+    { name: "Engine Oil 5L Synthetic", price: 2500, category: "Oils & Fluids", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.22 PM.jpeg", stock: 58, rating: 4.9 },
+    { name: "Coolant Concentrate 1L", price: 950, category: "Oils & Fluids", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.24 PM.jpeg", stock: 62, rating: 4.8 },
+    { name: "Brake Fluid 500ml", price: 650, category: "Oils & Fluids", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.25 PM.jpeg", stock: 55, rating: 5.0 },
+    { name: "Power Steering Fluid", price: 1100, category: "Oils & Fluids", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.27 PM.jpeg", stock: 48, rating: 4.9 },
+    { name: "Transmission Fluid", price: 1800, category: "Oils & Fluids", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.30 PM.jpeg", stock: 40, rating: 4.8 },
+    { name: "Jump Starter Pack", price: 3500, category: "Tools", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.31 PM.jpeg", stock: 26, rating: 4.8 },
+    { name: "Tool Set Complete", price: 8200, category: "Tools", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.33 PM.jpeg", stock: 14, rating: 4.7 },
+    { name: "Tire Repair Kit", price: 1200, category: "Tools", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.35 PM.jpeg", stock: 52, rating: 4.9 },
 ];
+
+const availableImageFiles = [
+    "WhatsApp Image 2026-01-23 at 4.58.19 PM (1).jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.23 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.26 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.27 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.31 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.35 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.37 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.42 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.44 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.45 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.46 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.47 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.50 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.53 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.55 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.58.59 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.59.00 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 4.59.04 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.46 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.48 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.49 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.56 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.00.58 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.00 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.01 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.02 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.03 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.06 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.07 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.09 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.12 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.13 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.14 PM.jpeg",
+    "WhatsApp Image 2026-01-23 at 5.01.16 PM.jpeg"
+];
+
+function resolveVehicleImage(path, index) {
+    const rawName = (path || "").split("/").pop();
+    if (rawName && availableImageFiles.includes(rawName)) {
+        return `calxin.images/${rawName}`;
+    }
+    return `calxin.images/${availableImageFiles[index % availableImageFiles.length]}`;
+}
+
+vehicles.forEach((vehicle, index) => {
+    vehicle.image = resolveVehicleImage(vehicle.image, index);
+});
 
 // ================================
 // INITIALIZATION
@@ -584,7 +679,7 @@ document.addEventListener("DOMContentLoaded", function(){
     window.toggleMenu = toggleMenu;
 
     // Close menu when clicking on navigation links
-    const navLinks = document.querySelectorAll(".side-menu .nav-menu a");
+    const navLinks = document.querySelectorAll(".side-menu .mobile-nav a, .side-menu .nav-menu a");
     navLinks.forEach(link => {
         link.addEventListener("click", function() {
             const sideMenu = document.getElementById("sideMenu");
@@ -755,3 +850,4 @@ function viewProductDetails(index) {
 function closeProductModal() {
     closeLightbox();
 }
+

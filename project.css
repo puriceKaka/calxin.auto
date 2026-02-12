@@ -291,6 +291,77 @@ ul {
     .hamburger {
         display: flex;
     }
+    
+    .header-nav {
+        display: none;
+    }
+}
+
+/* ================================
+   MOBILE NAVIGATION MENU STYLES
+   ================================ */
+.nav-menu-mobile {
+    display: none;
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: linear-gradient(135deg, #0077be, #00a8e8);
+    color: white;
+    padding: 80px 20px 20px;
+    z-index: 99;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-menu-mobile.active {
+    right: 0;
+}
+
+.nav-menu-mobile h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-menu-mobile ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.nav-menu-mobile li {
+    list-style: none;
+}
+
+.nav-menu-mobile a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.nav-menu-mobile a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left-color: #a8d8ff;
+    transform: translateX(5px);
+}
+
+@media (max-width: 900px) {
+    .nav-menu-mobile {
+        display: block;
+    }
 }
 
 /* ================================
@@ -436,6 +507,10 @@ ul {
     height: 1px;
     background: rgba(255, 255, 255, 0.2);
     margin: 15px 0;
+}
+
+.side-menu .mobile-nav li {
+    margin-bottom: 8px;
 }
 
 .nav-menu li,
@@ -927,6 +1002,11 @@ ul {
     .hamburger {
         display: flex !important;
     }
+
+    .side-menu {
+        width: min(86vw, 320px);
+        right: calc(-1 * min(86vw, 320px) - 10px);
+    }
 }
 
 @media (max-width: 768px) {
@@ -968,7 +1048,7 @@ ul {
     }
 
     .products {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         gap: 10px;
         padding: 10px;
     }
@@ -977,8 +1057,8 @@ ul {
         min-height: 280px;
     }
 
-    .card img {
-        height: 150px;
+    .card-image-wrapper {
+        height: 170px;
     }
 
     .card button {
