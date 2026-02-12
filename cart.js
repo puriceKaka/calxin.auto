@@ -5,6 +5,28 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDeliveryOptions();
 });
 
+const PORTAL_PRODUCTS = [
+    { id: 1, name: "Engine Assembly Complete", price: 45000, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg" },
+    { id: 2, name: "Transmission Automatic", price: 38000, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.23 PM.jpeg" },
+    { id: 3, name: "Brake Pads Set", price: 2500, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.26 PM.jpeg" },
+    { id: 4, name: "Car Battery 12V 100A", price: 8500, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.27 PM.jpeg" }
+];
+
+function resolveImagePath(path) {
+    const image = String(path || "").replace("images.Calxin/", "calxin.images/");
+    return image || "https://via.placeholder.com/120";
+}
+
+function normalizeCartItems(items) {
+    return (items || []).map(item => ({
+        productId: item.productId || item.id || 0,
+        name: item.name || "Product",
+        price: Number(item.price) || 0,
+        quantity: Number(item.quantity || item.qty) || 1,
+        image: resolveImagePath(item.image)
+    }));
+}
+
 // Mobile menu toggle
 function toggleMobileMenu() {
     const sideMenu = document.getElementById('sideMenuMobile');
@@ -41,7 +63,8 @@ document.addEventListener('click', function(event) {
 // Load and display cart items
 function loadCart() {
     const cartData = localStorage.getItem('cart');
-    const cartItems = cartData ? JSON.parse(cartData) : [];
+    const cartItems = normalizeCartItems(cartData ? JSON.parse(cartData) : []);
+    localStorage.setItem('cart', JSON.stringify(cartItems));
 
     const container = document.getElementById('cartItemsContainer');
     const emptyMessage = document.getElementById('emptyCartMessage');
@@ -70,18 +93,18 @@ function createCartItemElement(item, index) {
     const div = document.createElement('div');
     div.className = 'cart-item';
     
-    const itemTotal = (item.price || 0) * (item.quantity || 1);
+    const itemTotal = item.price * item.quantity;
 
     div.innerHTML = `
         <div class="cart-item-image">
-            <img src="${item.image || 'https://via.placeholder.com/120'}" alt="${item.name}">
+            <img src="${item.image}" alt="${item.name}">
         </div>
         <div class="cart-item-details">
             <div class="cart-item-name">${item.name}</div>
             <div class="cart-item-price">KES ${(item.price || 0).toLocaleString()}</div>
             <div class="cart-item-quantity">
                 <button class="qty-btn" onclick="updateQuantity(${index}, -1)">−</button>
-                <input type="number" id="quantity-${index}" value="${item.quantity || 1}" min="1" readonly>
+                <input type="number" id="quantity-${index}" value="${item.quantity}" min="1" readonly>
                 <button class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
             </div>
         </div>
@@ -99,10 +122,10 @@ function createCartItemElement(item, index) {
 // Update item quantity
 function updateQuantity(index, change) {
     const cartData = localStorage.getItem('cart');
-    const cartItems = cartData ? JSON.parse(cartData) : [];
+    const cartItems = normalizeCartItems(cartData ? JSON.parse(cartData) : []);
 
     if(cartItems[index]) {
-        cartItems[index].quantity = Math.max(1, (cartItems[index].quantity || 1) + change);
+        cartItems[index].quantity = Math.max(1, cartItems[index].quantity + change);
         localStorage.setItem('cart', JSON.stringify(cartItems));
         loadCart();
     }
@@ -112,7 +135,7 @@ function updateQuantity(index, change) {
 function removeFromCart(index) {
     if(confirm('Are you sure you want to remove this item?')) {
         const cartData = localStorage.getItem('cart');
-        const cartItems = cartData ? JSON.parse(cartData) : [];
+        const cartItems = normalizeCartItems(cartData ? JSON.parse(cartData) : []);
 
         cartItems.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cartItems));
@@ -123,7 +146,7 @@ function removeFromCart(index) {
 // Update totals
 function updateTotals() {
     const cartData = localStorage.getItem('cart');
-    const cartItems = cartData ? JSON.parse(cartData) : [];
+    const cartItems = normalizeCartItems(cartData ? JSON.parse(cartData) : []);
     const deliveryFeeElement = document.querySelector('input[name="delivery"]:checked');
     const deliveryFee = deliveryFeeElement ? parseInt(deliveryFeeElement.value) : 0;
 
@@ -184,7 +207,7 @@ function applyPromoCode() {
 // Checkout
 function checkout() {
     const cartData = localStorage.getItem('cart');
-    const cartItems = cartData ? JSON.parse(cartData) : [];
+    const cartItems = normalizeCartItems(cartData ? JSON.parse(cartData) : []);
 
     if(cartItems.length === 0) {
         alert('Your cart is empty');
@@ -229,8 +252,8 @@ ${discount > 0 ? `Discount: -KES ${discount.toLocaleString()}` : ''}
 TOTAL: KES ${total.toLocaleString()}
 
 Please contact us to arrange payment and delivery:
-📧 calxinkenya147@gmail.com
-📱 WhatsApp: +254712345678
+Email: calxinkenya147@gmail.com
+WhatsApp: +254712345678
 
 Thank you for your order!`;
 
@@ -248,21 +271,15 @@ Thank you for your order!`;
 
 // Load suggested products
 function loadSuggestedProducts() {
-    const stored = localStorage.getItem('adminProducts');
-    const products = stored ? JSON.parse(stored) : [];
-
-    // Shuffle and get random products
-    const shuffled = products.sort(() => 0.5 - Math.random()).slice(0, 4);
-
     const container = document.getElementById('suggestedProducts');
     container.innerHTML = '';
 
-    if(shuffled.length === 0) {
+    if(PORTAL_PRODUCTS.length === 0) {
         container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #999;">No products available</p>';
         return;
     }
 
-    shuffled.forEach(product => {
+    PORTAL_PRODUCTS.forEach(product => {
         const card = document.createElement('div');
         card.className = 'suggested-card';
         card.innerHTML = `
@@ -284,10 +301,10 @@ function loadSuggestedProducts() {
 // Add suggested product to cart
 function addSuggestedToCart(id, name, price, image) {
     let cartData = localStorage.getItem('cart');
-    let cartItems = cartData ? JSON.parse(cartData) : [];
+    let cartItems = normalizeCartItems(cartData ? JSON.parse(cartData) : []);
 
     // Check if product already in cart
-    const existing = cartItems.find(item => item.productId === id);
+    const existing = cartItems.find(item => Number(item.productId) === Number(id));
     if(existing) {
         existing.quantity += 1;
     } else {

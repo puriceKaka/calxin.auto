@@ -155,8 +155,11 @@ function showCart() {
 }
 
 function updateQty(index, change) {
-    cart[index].qty += change;
-    if(cart[index].qty <= 0) {
+    const currentQty = cart[index].quantity || cart[index].qty || 1;
+    const nextQty = currentQty + change;
+    cart[index].quantity = nextQty;
+    cart[index].qty = nextQty;
+    if(nextQty <= 0) {
         removeFromCart(index);
     } else {
         localStorage.setItem("cart", JSON.stringify(cart));
@@ -279,9 +282,10 @@ function addToLiked(name, image, price) {
 function addToCart(name, price, image) {
     const found = cart.find(item => item.name === name);
     if (found) {
-        found.qty += 1;
+        found.quantity = (found.quantity || found.qty || 1) + 1;
+        found.qty = found.quantity;
     } else {
-        cart.push({ name, price, image, qty: 1 });
+        cart.push({ name, price, image, quantity: 1, qty: 1 });
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -456,7 +460,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 // Update cart count in header
 function updateCartCount() {
-    const count = cart.reduce((total, item) => total + item.qty, 0);
+    const count = cart.reduce((total, item) => total + (item.quantity || item.qty || 0), 0);
     const cartCountElem = document.getElementById("cart-count");
     if(cartCountElem) {
         cartCountElem.innerText = count;
@@ -475,13 +479,14 @@ document.addEventListener("DOMContentLoaded", function(){
         cartIcon.style.cursor = "pointer";
         cartIcon.addEventListener("click", function(){
             if(cart.length === 0) {
-                showToastNotification("🛒 Your cart is empty. Start adding vehicles!");
+                showToastNotification("Your cart is empty. Start adding products.");
             } else {
-                let cartSummary = "🛒 YOUR CART:\n\n";
+                let cartSummary = "YOUR CART:\n\n";
                 let total = 0;
                 cart.forEach((item, index) => {
-                    cartSummary += `${index + 1}. ${item.name}\n   KES ${item.price.toLocaleString()} x ${item.qty} = KES ${(item.price * item.qty).toLocaleString()}\n\n`;
-                    total += item.price * item.qty;
+                    const itemQty = item.quantity || item.qty || 1;
+                    cartSummary += `${index + 1}. ${item.name}\n   KES ${item.price.toLocaleString()} x ${itemQty} = KES ${(item.price * itemQty).toLocaleString()}\n\n`;
+                    total += item.price * itemQty;
                 });
                 cartSummary += `---\nTOTAL: KES ${total.toLocaleString()}`;
             }
@@ -677,7 +682,7 @@ document.addEventListener("DOMContentLoaded", function(){
     window.toggleMenu = toggleMenu;
 
     // Close menu when clicking on navigation links
-    const navLinks = document.querySelectorAll(".side-menu .mobile-nav a, .side-menu .nav-menu a");
+    const navLinks = document.querySelectorAll(".side-menu .nav-menu a");
     navLinks.forEach(link => {
         link.addEventListener("click", function() {
             const sideMenu = document.getElementById("sideMenu");
