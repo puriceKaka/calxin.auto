@@ -264,11 +264,15 @@ ul {
    HAMBURGER MENU STYLES
    ================================ */
 .hamburger {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 6px;
     cursor: pointer;
     z-index: 101;
+}
+
+.header-left .hamburger {
+    min-width: 26px;
 }
 
 .hamburger span {
