@@ -37,7 +37,7 @@ body {
 }
 
 .nav-links {
-    display: flex;
+    display: none;
     gap: 2rem;
     flex-wrap: wrap;
 }
@@ -57,7 +57,7 @@ body {
 }
 
 .hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 6px;
     cursor: pointer;

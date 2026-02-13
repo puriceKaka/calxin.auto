@@ -141,6 +141,11 @@ ul {
     border-bottom-color: #a8d8ff;
 }
 
+/* Use phone-style navigation on all devices */
+.header-nav {
+    display: none;
+}
+
 /* ================================
    MODAL STYLES (PRODUCT DETAILS)
    ================================ */
@@ -259,7 +264,7 @@ ul {
    HAMBURGER MENU STYLES
    ================================ */
 .hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 6px;
     cursor: pointer;
@@ -286,16 +291,7 @@ ul {
     transform: rotate(-45deg) translate(10px, -10px);
 }
 
-/* Show hamburger on mobile */
-@media (max-width: 900px) {
-    .hamburger {
-        display: flex;
-    }
-    
-    .header-nav {
-        display: none;
-    }
-}
+/* Phone-style navigation is enabled for all screen sizes */
 
 /* ================================
    MOBILE NAVIGATION MENU STYLES
