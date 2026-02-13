@@ -365,6 +365,10 @@ tr:hover {
     transition: all 0.3s ease;
 }
 
+.image-card-media {
+    position: relative;
+}
+
 .image-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -375,6 +379,43 @@ tr:hover {
     height: 150px;
     object-fit: cover;
     background: #f0f0f0;
+}
+
+.stock-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    z-index: 2;
+}
+
+.stock-very-high {
+    background: rgba(0, 121, 107, 0.92);
+}
+
+.stock-high {
+    background: rgba(46, 125, 50, 0.92);
+}
+
+.stock-medium {
+    background: rgba(239, 108, 0, 0.92);
+}
+
+.stock-low {
+    background: rgba(106, 27, 154, 0.92);
+}
+
+.stock-critical {
+    background: rgba(198, 40, 40, 0.92);
+}
+
+.stock-out {
+    background: rgba(69, 90, 100, 0.92);
 }
 
 .image-card-info {

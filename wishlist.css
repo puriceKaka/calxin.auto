@@ -177,23 +177,33 @@ body {
     font-weight: 600;
 }
 
+.stock-very-high {
+    background: #00796b;
+    color: white;
+}
+
 .stock-high {
     background: #2e7d32;
     color: white;
 }
 
 .stock-medium {
-    background: #7b1fa2;
+    background: #ef6c00;
     color: white;
 }
 
 .stock-low {
-    background: #ef6c00;
+    background: #6a1b9a;
     color: white;
 }
 
 .stock-critical {
     background: #c62828;
+    color: white;
+}
+
+.stock-out {
+    background: #455a64;
     color: white;
 }
 

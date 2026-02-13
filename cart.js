@@ -48,6 +48,7 @@ const PORTAL_PRODUCTS = AVAILABLE_IMAGE_FILES.map((file, index) => ({
     id: index + 1,
     name: `Auto Part ${index + 1}`,
     price: 1000 + (index * 250),
+    stock: 6 + (index % 48),
     image: encodeURI(`calxin.images/${file}`)
 }));
 
@@ -57,6 +58,15 @@ function resolveImagePath(path) {
     const decoded = raw.includes("%") ? decodeURI(raw) : raw;
     const normalized = decoded.replace("images.Calxin/", "calxin.images/");
     return encodeURI(normalized);
+}
+
+function getStockClass(stock) {
+    if (stock > 45) return "stock-very-high";
+    if (stock > 30) return "stock-high";
+    if (stock > 15) return "stock-medium";
+    if (stock > 5) return "stock-low";
+    if (stock > 0) return "stock-critical";
+    return "stock-out";
 }
 
 function normalizeCartItems(items) {
@@ -375,12 +385,14 @@ function loadSuggestedProducts() {
         id: 1000 + i,
         name: item.name,
         price: item.price,
+        stock: Math.max(Number(item.quantity) || 1, 1),
         image: resolveImagePath(item.image)
     }));
     const fromAdmin = getAdminImages().map((image, i) => ({
         id: 2000 + i,
         name: `Admin Product ${i + 1}`,
         price: 0,
+        stock: 12 + (i % 20),
         image
     }));
 
@@ -402,11 +414,15 @@ function loadSuggestedProducts() {
         card.className = 'suggested-card';
         const safeName = String(product.name || "").replace(/'/g, "\\'");
         const safeImage = String(product.image || "").replace(/'/g, "\\'");
+        const stock = Number(product.stock) || 0;
+        const stockClass = getStockClass(stock);
+        const stockText = stock > 0 ? `${stock} in stock` : "Out of stock";
         const liked = isInWishlist(product.id);
         const likedClass = liked ? "liked" : "";
         const heart = liked ? "❤️" : "🤍";
         card.innerHTML = `
             <div class="suggested-card-image" onclick="addSuggestedToCart(${product.id}, '${safeName}', ${Number(product.price) || 0}, '${safeImage}')">
+                <span class="suggested-stock-badge ${stockClass}">${stockText}</span>
                 <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/180x150?text=${encodeURIComponent(product.name)}'">
             </div>
             <div class="suggested-card-info">

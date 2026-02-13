@@ -47,13 +47,17 @@ function loadWishlist() {
     emptyMessage.style.display = 'none';
 
     wishlist.forEach(product => {
-        const stockClass = product.stock > 30
-            ? 'stock-high'
-            : product.stock > 15
-                ? 'stock-medium'
-                : product.stock > 5
-                    ? 'stock-low'
-                    : 'stock-critical';
+        const stockClass = product.stock > 45
+            ? 'stock-very-high'
+            : product.stock > 30
+                ? 'stock-high'
+                : product.stock > 15
+                    ? 'stock-medium'
+                    : product.stock > 5
+                        ? 'stock-low'
+                        : product.stock > 0
+                            ? 'stock-critical'
+                            : 'stock-out';
         const item = document.createElement('div');
         item.className = 'wishlist-item';
         item.innerHTML = `

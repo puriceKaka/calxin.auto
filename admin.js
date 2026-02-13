@@ -437,8 +437,15 @@ function loadImagesGallery() {
         card.className = "image-card";
         const imageSource = image.data ? image.data : image.url;
         const canDelete = Number(image.id) < 100000;
+        const stock = Number(image.stock);
+        const normalizedStock = Number.isFinite(stock) ? stock : (6 + (Math.abs(Number(image.id)) % 55));
+        const stockClass = getStockClass(normalizedStock);
+        const stockText = normalizedStock > 0 ? `${normalizedStock} in stock` : "Out of stock";
         card.innerHTML = `
-            <img src="${imageSource}" alt="${image.name}" class="image-card-img" onerror="this.src='https://via.placeholder.com/200?text=Image+Not+Found'">
+            <div class="image-card-media">
+                <span class="stock-badge ${stockClass}">${stockText}</span>
+                <img src="${imageSource}" alt="${image.name}" class="image-card-img" onerror="this.src='https://via.placeholder.com/200?text=Image+Not+Found'">
+            </div>
             <div class="image-card-info">
                 <div class="image-card-name">${image.name}</div>
                 <div class="image-card-category">Category: ${image.category}</div>
@@ -452,6 +459,15 @@ function loadImagesGallery() {
         `;
         gallery.appendChild(card);
     });
+}
+
+function getStockClass(stock) {
+    if (stock > 45) return "stock-very-high";
+    if (stock > 30) return "stock-high";
+    if (stock > 15) return "stock-medium";
+    if (stock > 5) return "stock-low";
+    if (stock > 0) return "stock-critical";
+    return "stock-out";
 }
 
 // ================================
@@ -480,6 +496,7 @@ function getCatalogImages() {
         url: encodeURI(`calxin.images/${file}`),
         type: "catalog",
         category: "product",
+        stock: 8 + (index % 52),
         description: "",
         uploadDate: "Catalog"
     }));
@@ -493,6 +510,7 @@ function getCatalogImages() {
             url: encodeURI(String(product.image).replace("images.Calxin/", "calxin.images/")),
             type: "product",
             category: product.category || "product",
+            stock: Number(product.stock) || (10 + (index % 30)),
             description: product.description || "",
             uploadDate: "From product"
         }));

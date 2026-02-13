@@ -98,18 +98,22 @@ function filterByCategory(category) {
     
     let html = '';
     filtered.forEach((vehicle, index) => {
-        const stockClass = vehicle.stock > 30
-            ? "stock-high"
-            : vehicle.stock > 15
-                ? "stock-medium"
-                : vehicle.stock > 5
-                    ? "stock-low"
-                    : "stock-critical";
+        const stockClass = vehicle.stock > 45
+            ? "stock-very-high"
+            : vehicle.stock > 30
+                ? "stock-high"
+                : vehicle.stock > 15
+                    ? "stock-medium"
+                    : vehicle.stock > 5
+                        ? "stock-low"
+                        : vehicle.stock > 0
+                            ? "stock-critical"
+                            : "stock-out";
         const stockText = vehicle.stock > 0 ? `${vehicle.stock} in stock` : "Out of stock";
         
         html += `
         <div class="card" style="opacity: 1;">
-            <div class="card-image-wrapper">
+            <div class="card-image-wrapper" onclick="quickAddToCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)">
                 <img src="${vehicle.image}" alt="${vehicle.name}" onerror="this.src='${LOCAL_FALLBACK_IMAGE}'">
                 <span class="stock-badge ${stockClass}">${stockText}</span>
             </div>
@@ -122,7 +126,7 @@ function filterByCategory(category) {
                 <p class="card-category">${vehicle.category}</p>
                 <p class="card-price">KES ${vehicle.price.toLocaleString()}</p>
                 <div class="card-actions">
-                    <button class="home-add-btn" onclick="quickAddToCartAndOpenCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)" ${vehicle.stock === 0 ? 'disabled' : ''}><i class="fas fa-plus"></i> Add</button>
+                    <button class="home-add-btn" onclick="quickAddToCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)" ${vehicle.stock === 0 ? 'disabled' : ''}><i class="fas fa-plus"></i> Add</button>
                     <button class="wishlist-heart-btn ${isProductInWishlist(index) ? "liked" : ""}" data-product-id="${index}" onclick="toggleWishlistByProductId(${index}, event)" title="Like">❤️</button>
                 </div>
             </div>
@@ -337,7 +341,7 @@ function updateWishlistButtons() {
         const likedNow = wishlist.some(item => Number(item.id) === productId);
         btn.classList.toggle("liked", likedNow);
         btn.setAttribute("aria-label", likedNow ? "Remove from wishlist" : "Add to wishlist");
-        btn.textContent = likedNow ? "❤️" : "🤍";
+        btn.textContent = likedNow ? "\u2665" : "\u2661";
     });
 }
 
@@ -369,6 +373,14 @@ function quickAddToCartAndOpenCart(name, price, image, event) {
     }
     addToCart(name, price, image);
     window.location.href = "cart.html";
+}
+
+function quickAddToCart(name, price, image, event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    addToCart(name, price, image);
 }
 
 // Toast notification function
@@ -510,25 +522,8 @@ function makeDraggable() {
 
 // Attach click events to all cards
 function attachCardClicks(){
-    const cards = document.querySelectorAll(".products .card");
-    cards.forEach((card) => {
-        card.style.cursor = "pointer";
-        card.onclick = (event) => {
-            if (event.target.closest("button, a")) {
-                return;
-            }
-            const nameElem = card.querySelector("h3");
-            const priceElem = card.querySelector(".card-price");
-            const imageElem = card.querySelector("img");
-            if (!nameElem || !priceElem || !imageElem) return;
-            const name = nameElem.textContent.trim();
-            const price = Number(priceElem.textContent.replace(/[^\d]/g, ""));
-            const image = imageElem.getAttribute("src") || "";
-            if (!name || !price) return;
-            addToCart(name, price, image);
-            window.location.href = "cart.html";
-        };
-    });
+    // Home uses image/Add controls for cart actions, matching shopping page behavior.
+    return;
 }
 
 // Close modal when clicking outside
@@ -910,18 +905,22 @@ document.addEventListener("DOMContentLoaded", function(){
             card.style.opacity = "1";
 
             // Create stock status badge
-            const stockClass = vehicle.stock > 30
-                ? "stock-high"
-                : vehicle.stock > 15
-                    ? "stock-medium"
-                    : vehicle.stock > 5
-                        ? "stock-low"
-                        : "stock-critical";
+            const stockClass = vehicle.stock > 45
+                ? "stock-very-high"
+                : vehicle.stock > 30
+                    ? "stock-high"
+                    : vehicle.stock > 15
+                        ? "stock-medium"
+                        : vehicle.stock > 5
+                            ? "stock-low"
+                            : vehicle.stock > 0
+                                ? "stock-critical"
+                                : "stock-out";
             const stockText = vehicle.stock > 0 ? `${vehicle.stock} in stock` : "Out of stock";
 
             card.style.cursor = "pointer";
             card.innerHTML = `
-                <div class="card-image-wrapper">
+                <div class="card-image-wrapper" onclick="quickAddToCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)">
                     <img src="${vehicle.image}" alt="${vehicle.name}" onerror="this.src='${LOCAL_FALLBACK_IMAGE}'">
                     <span class="stock-badge ${stockClass}">${stockText}</span>
                 </div>
@@ -934,7 +933,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     <p class="card-category">${vehicle.category}</p>
                     <p class="card-price">KES ${vehicle.price.toLocaleString()}</p>
                     <div class="card-actions">
-                        <button class="home-add-btn" onclick="quickAddToCartAndOpenCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)" ${vehicle.stock === 0 ? 'disabled' : ''}><i class="fas fa-plus"></i> Add</button>
+                        <button class="home-add-btn" onclick="quickAddToCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)" ${vehicle.stock === 0 ? 'disabled' : ''}><i class="fas fa-plus"></i> Add</button>
                         <button class="wishlist-heart-btn ${isProductInWishlist(index) ? "liked" : ""}" data-product-id="${index}" onclick="toggleWishlistByProductId(${index}, event)" title="Like">❤️</button>
                     </div>
                 </div>
@@ -1015,4 +1014,5 @@ function viewProductDetails(index) {
 function closeProductModal() {
     closeLightbox();
 }
+
 
