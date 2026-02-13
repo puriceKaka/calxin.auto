@@ -528,11 +528,9 @@ ul {
    PRODUCTS GRID STYLES
    ================================ */
 .products-heading-wrap {
-    width: 100%;
-    max-width: none;
-    margin: 12px 0 0;
-    padding: 0 !important;
-    margin-left: 0 !important;
+    max-width: 1300px;
+    margin: 12px auto 0;
+    padding: 0 30px;
 }
 
 .products-heading {
@@ -540,10 +538,7 @@ ul {
     color: #005f95;
     font-weight: 950;
     letter-spacing: 0.3px;
-    margin: 0 !important;
-    padding-left: 0 !important;
-    text-align: left !important;
-    margin-left: 0 !important;
+    margin: 0;
 }
 
 .products {
