@@ -116,7 +116,7 @@ function filterByCategory(category) {
                 <p class="card-category">${vehicle.category}</p>
                 <p class="card-price">KES ${vehicle.price.toLocaleString()}</p>
                 <div class="card-actions">
-                    <button class="home-add-btn" onclick="quickAddToCartAndOpenCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)" ${vehicle.stock === 0 ? 'disabled' : ''}>Add to Cart</button>
+                    <button class="home-add-btn" onclick="quickAddToCartAndOpenCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)" ${vehicle.stock === 0 ? 'disabled' : ''}><i class="fas fa-plus"></i> Add</button>
                     <button class="wishlist-heart-btn ${isProductInWishlist(index) ? "liked" : ""}" data-product-id="${index}" onclick="toggleWishlistByProductId(${index}, event)" title="Like">❤️</button>
                 </div>
             </div>
@@ -922,7 +922,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     <p class="card-category">${vehicle.category}</p>
                     <p class="card-price">KES ${vehicle.price.toLocaleString()}</p>
                     <div class="card-actions">
-                        <button class="home-add-btn" onclick="quickAddToCartAndOpenCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)" ${vehicle.stock === 0 ? 'disabled' : ''}>Add to Cart</button>
+                        <button class="home-add-btn" onclick="quickAddToCartAndOpenCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)" ${vehicle.stock === 0 ? 'disabled' : ''}><i class="fas fa-plus"></i> Add</button>
                         <button class="wishlist-heart-btn ${isProductInWishlist(index) ? "liked" : ""}" data-product-id="${index}" onclick="toggleWishlistByProductId(${index}, event)" title="Like">❤️</button>
                     </div>
                 </div>
