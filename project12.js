@@ -400,7 +400,7 @@ function openModal(vehicle){
             <span><strong>Price:</strong> KES ${vehicle.price.toLocaleString()}</span>
             <span><strong>Category:</strong> ${vehicle.category}</span>
             <span><strong>Rating:</strong> ⭐ ${vehicle.rating}</span>
-            <span><strong>Stock:</strong> ${vehicle.stock > 0 ? vehicle.stock + ' available' : 'Out of stock'}</span>
+            <span><strong>Stock:</strong> ${vehicle.stock > 0 ? `${vehicle.stock} in stock` : 'Out of stock'}</span>
         </div>
     `;
     

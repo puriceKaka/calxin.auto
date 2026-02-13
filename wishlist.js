@@ -52,7 +52,7 @@ function loadWishlist() {
         item.innerHTML = `
             <div class="wishlist-item-image" onclick="viewProduct(${product.id})">
                 <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/250x200?text=${encodeURIComponent(product.name)}'">
-                <div class="stock-badge">${product.stock > 0 ? product.stock + ' in Stock' : 'Out of Stock'}</div>
+                <div class="stock-badge">${product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}</div>
             </div>
             <div class="wishlist-item-info">
                 <h3>${product.name}</h3>

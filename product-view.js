@@ -163,13 +163,13 @@ function loadProductDetails() {
     document.getElementById('breadcrumbName').textContent = currentProduct.name;
     document.getElementById('productCategory').textContent = currentProduct.category;
     document.getElementById('productRating').textContent = `⭐ ${currentProduct.rating}`;
-    document.getElementById('productStock').textContent = `${currentProduct.stock} in Stock`;
+    document.getElementById('productStock').textContent = `${currentProduct.stock} in stock`;
     document.getElementById('productPrice').textContent = `KES ${currentProduct.price.toLocaleString()}`;
     
     // Specs
     document.getElementById('specCategory').textContent = currentProduct.category;
     document.getElementById('specPrice').textContent = `KES ${currentProduct.price.toLocaleString()}`;
-    document.getElementById('specStock').textContent = `${currentProduct.stock} units available`;
+    document.getElementById('specStock').textContent = `${currentProduct.stock} in stock`;
     document.getElementById('specRating').textContent = `${currentProduct.rating}/5 (Highly Rated)`;
     
     // Related section
