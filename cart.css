@@ -615,7 +615,7 @@ body {
 }
 
 .suggested-card-btn {
-    width: 100%;
+    width: auto;
     height: 40px;
     padding: 0 12px;
     background: #0077be;
@@ -639,6 +639,12 @@ body {
     display: flex;
     gap: 8px;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.suggested-card-actions button {
+    margin: 0;
 }
 
 .suggested-card-actions .suggested-card-btn {
@@ -684,7 +690,7 @@ body {
 .suggested-wishlist-btn {
     width: 40px;
     height: 40px;
-    margin-right: 6px;
+    margin-right: 10px;
     border: 1px solid #ddd;
     background: #fff;
     border-radius: 8px;
@@ -862,7 +868,7 @@ body {
     }
 }
 
-/* Static UI mode */
+/* Motion settings */
 html {
     scroll-behavior: auto;
 }
