@@ -47,12 +47,19 @@ function loadWishlist() {
     emptyMessage.style.display = 'none';
 
     wishlist.forEach(product => {
+        const stockClass = product.stock > 30
+            ? 'stock-high'
+            : product.stock > 15
+                ? 'stock-medium'
+                : product.stock > 5
+                    ? 'stock-low'
+                    : 'stock-critical';
         const item = document.createElement('div');
         item.className = 'wishlist-item';
         item.innerHTML = `
             <div class="wishlist-item-image" onclick="viewProduct(${product.id})">
                 <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/250x200?text=${encodeURIComponent(product.name)}'">
-                <div class="stock-badge">${product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}</div>
+                <div class="stock-badge ${stockClass}">${product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}</div>
             </div>
             <div class="wishlist-item-info">
                 <h3>${product.name}</h3>

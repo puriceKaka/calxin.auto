@@ -605,11 +605,16 @@ ul {
 }
 
 .stock-medium {
-    background: rgba(255, 152, 0, 0.9);
+    background: rgba(33, 150, 243, 0.92);
     color: white;
 }
 
 .stock-low {
+    background: rgba(255, 152, 0, 0.92);
+    color: white;
+}
+
+.stock-critical {
     background: rgba(244, 67, 54, 0.9);
     color: white;
 }

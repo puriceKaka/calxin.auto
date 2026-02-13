@@ -169,12 +169,32 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: #0077be;
+    background: #607d8b;
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 600;
+}
+
+.stock-high {
+    background: #2e7d32;
+    color: white;
+}
+
+.stock-medium {
+    background: #1976d2;
+    color: white;
+}
+
+.stock-low {
+    background: #ef6c00;
+    color: white;
+}
+
+.stock-critical {
+    background: #c62828;
+    color: white;
 }
 
 .wishlist-item-info {

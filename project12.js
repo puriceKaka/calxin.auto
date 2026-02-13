@@ -98,7 +98,13 @@ function filterByCategory(category) {
     
     let html = '';
     filtered.forEach((vehicle, index) => {
-        const stockClass = vehicle.stock > 20 ? "stock-high" : vehicle.stock > 10 ? "stock-medium" : "stock-low";
+        const stockClass = vehicle.stock > 30
+            ? "stock-high"
+            : vehicle.stock > 15
+                ? "stock-medium"
+                : vehicle.stock > 5
+                    ? "stock-low"
+                    : "stock-critical";
         const stockText = vehicle.stock > 0 ? `${vehicle.stock} in stock` : "Out of stock";
         
         html += `
@@ -904,7 +910,13 @@ document.addEventListener("DOMContentLoaded", function(){
             card.style.opacity = "1";
 
             // Create stock status badge
-            const stockClass = vehicle.stock > 20 ? "stock-high" : vehicle.stock > 10 ? "stock-medium" : "stock-low";
+            const stockClass = vehicle.stock > 30
+                ? "stock-high"
+                : vehicle.stock > 15
+                    ? "stock-medium"
+                    : vehicle.stock > 5
+                        ? "stock-low"
+                        : "stock-critical";
             const stockText = vehicle.stock > 0 ? `${vehicle.stock} in stock` : "Out of stock";
 
             card.style.cursor = "pointer";
