@@ -52,8 +52,11 @@ const PORTAL_PRODUCTS = AVAILABLE_IMAGE_FILES.map((file, index) => ({
 }));
 
 function resolveImagePath(path) {
-    const image = String(path || "").replace("images.Calxin/", "calxin.images/");
-    return image ? encodeURI(image) : "https://via.placeholder.com/120";
+    const raw = String(path || "").trim();
+    if (!raw) return "https://via.placeholder.com/120";
+    const decoded = raw.includes("%") ? decodeURI(raw) : raw;
+    const normalized = decoded.replace("images.Calxin/", "calxin.images/");
+    return encodeURI(normalized);
 }
 
 function normalizeCartItems(items) {
@@ -83,6 +86,34 @@ function getAdminImages() {
     return admin
         .map(item => resolveImagePath(item.image))
         .filter(Boolean);
+}
+
+function getWishlistItems() {
+    return JSON.parse(localStorage.getItem('wishlist') || '[]');
+}
+
+function isInWishlist(productId) {
+    return getWishlistItems().some(item => Number(item.id) === Number(productId));
+}
+
+function toggleSuggestedWishlist(id, name, price, image) {
+    let wishlist = getWishlistItems();
+    const exists = wishlist.some(item => Number(item.id) === Number(id));
+    if (exists) {
+        wishlist = wishlist.filter(item => Number(item.id) !== Number(id));
+    } else {
+        wishlist.push({
+            id: Number(id),
+            name: name,
+            image: resolveImagePath(image),
+            price: Number(price) || 0,
+            category: "Spare Part",
+            rating: 4.5,
+            stock: 20
+        });
+    }
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    loadSuggestedProducts();
 }
 
 // Mobile menu toggle
@@ -369,16 +400,24 @@ function loadSuggestedProducts() {
     suggested.forEach(product => {
         const card = document.createElement('div');
         card.className = 'suggested-card';
+        const safeName = String(product.name || "").replace(/'/g, "\\'");
+        const safeImage = String(product.image || "").replace(/'/g, "\\'");
+        const likedClass = isInWishlist(product.id) ? "liked" : "";
         card.innerHTML = `
-            <div class="suggested-card-image">
+            <div class="suggested-card-image" onclick="addSuggestedToCart(${product.id}, '${safeName}', ${Number(product.price) || 0}, '${safeImage}')">
                 <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/180x150?text=${encodeURIComponent(product.name)}'">
             </div>
             <div class="suggested-card-info">
                 <div class="suggested-card-name">${product.name}</div>
                 <div class="suggested-card-price">KES ${(product.price || 0).toLocaleString()}</div>
-                <button class="suggested-card-btn" onclick="addSuggestedToCart(${product.id}, '${product.name}', ${product.price}, '${product.image}')">
-                    <i class="fas fa-plus"></i> Add
-                </button>
+                <div class="suggested-card-actions">
+                    <button class="suggested-card-btn" onclick="addSuggestedToCart(${product.id}, '${safeName}', ${Number(product.price) || 0}, '${safeImage}')">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+                    <button class="suggested-wishlist-btn ${likedClass}" onclick="toggleSuggestedWishlist(${product.id}, '${safeName}', ${Number(product.price) || 0}, '${safeImage}')">
+                        ❤️
+                    </button>
+                </div>
             </div>
         `;
         container.appendChild(card);

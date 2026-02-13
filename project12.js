@@ -732,10 +732,10 @@ const availableImageFiles = [
 
 function resolveVehicleImage(path, index) {
     const normalized = String(path || "").replace("images.Calxin/", "calxin.images/");
-    if (normalized.startsWith("calxin.images/")) {
+    const rawName = normalized.split("/").pop();
+    if (normalized.startsWith("calxin.images/") && rawName && availableImageFiles.includes(rawName)) {
         return encodeURI(normalized);
     }
-    const rawName = normalized.split("/").pop();
     if (rawName && availableImageFiles.includes(rawName)) {
         return encodeURI(`calxin.images/${rawName}`);
     }
