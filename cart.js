@@ -402,7 +402,9 @@ function loadSuggestedProducts() {
         card.className = 'suggested-card';
         const safeName = String(product.name || "").replace(/'/g, "\\'");
         const safeImage = String(product.image || "").replace(/'/g, "\\'");
-        const likedClass = isInWishlist(product.id) ? "liked" : "";
+        const liked = isInWishlist(product.id);
+        const likedClass = liked ? "liked" : "";
+        const heart = liked ? "❤️" : "🤍";
         card.innerHTML = `
             <div class="suggested-card-image" onclick="addSuggestedToCart(${product.id}, '${safeName}', ${Number(product.price) || 0}, '${safeImage}')">
                 <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/180x150?text=${encodeURIComponent(product.name)}'">
@@ -415,7 +417,7 @@ function loadSuggestedProducts() {
                         <i class="fas fa-plus"></i> Add
                     </button>
                     <button class="suggested-wishlist-btn ${likedClass}" onclick="toggleSuggestedWishlist(${product.id}, '${safeName}', ${Number(product.price) || 0}, '${safeImage}')">
-                        ❤️
+                        ${heart}
                     </button>
                 </div>
             </div>

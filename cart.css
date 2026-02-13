@@ -649,12 +649,14 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1rem;
+    color: #777;
     cursor: pointer;
 }
 
 .suggested-wishlist-btn.liked {
     background: #ffe1e8;
     border-color: #ff9cb0;
+    color: #c81634;
 }
 
 /* Footer */

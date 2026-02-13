@@ -705,31 +705,32 @@ ul {
 }
 
 .card-actions .wishlist-heart-btn {
-    flex: 0 0 48px;
+    flex: 0 0 40px;
     flex-shrink: 0;
-    width: 48px;
-    min-width: 48px;
-    height: 48px;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
     padding: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #f1f1f1;
-    color: #666;
+    background: #fff;
+    color: #777;
     border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
 .card-actions .wishlist-heart-btn:hover {
-    background: #ffe7ea;
-    border-color: #ff9cab;
+    background: #fff3f6;
+    border-color: #ffb4c2;
 }
 
 .card-actions .wishlist-heart-btn.liked {
-    background: #ffdde4;
+    background: #ffe1e8;
     color: #c81634;
-    border-color: #ff748c;
+    border-color: #ff9cb0;
 }
 
 /* ================================
