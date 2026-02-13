@@ -684,6 +684,7 @@ body {
 .suggested-wishlist-btn {
     width: 40px;
     height: 40px;
+    margin-right: 6px;
     border: 1px solid #ddd;
     background: #fff;
     border-radius: 8px;
