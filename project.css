@@ -528,9 +528,10 @@ ul {
    PRODUCTS GRID STYLES
    ================================ */
 .products-heading-wrap {
-    max-width: 1300px;
-    margin: 12px auto 0;
-    padding: 0 30px;
+    width: 100%;
+    max-width: none;
+    margin: 12px 0 0;
+    padding: 0;
 }
 
 .products-heading {
@@ -538,6 +539,9 @@ ul {
     color: #005f95;
     font-weight: 950;
     letter-spacing: 0.3px;
+    margin: 0;
+    padding-left: 0;
+    text-align: left;
 }
 
 .products {
@@ -628,6 +632,18 @@ ul {
     background: rgba(69, 90, 100, 0.92);
     color: white;
 }
+
+/* CSS-only stock badge color variation for home products */
+.products .card:nth-child(10n+1) .stock-badge { background: #1e88e5 !important; }
+.products .card:nth-child(10n+2) .stock-badge { background: #43a047 !important; }
+.products .card:nth-child(10n+3) .stock-badge { background: #fb8c00 !important; }
+.products .card:nth-child(10n+4) .stock-badge { background: #8e24aa !important; }
+.products .card:nth-child(10n+5) .stock-badge { background: #e53935 !important; }
+.products .card:nth-child(10n+6) .stock-badge { background: #00acc1 !important; }
+.products .card:nth-child(10n+7) .stock-badge { background: #7cb342 !important; }
+.products .card:nth-child(10n+8) .stock-badge { background: #f4511e !important; }
+.products .card:nth-child(10n+9) .stock-badge { background: #3949ab !important; }
+.products .card:nth-child(10n+10) .stock-badge { background: #6d4c41 !important; }
 
 .card-content {
     padding: 15px;
@@ -1524,7 +1540,6 @@ html {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: #0077be;
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
