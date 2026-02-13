@@ -752,6 +752,37 @@ vehicles.forEach((vehicle, index) => {
     vehicle.image = resolveVehicleImage(vehicle.image, index);
 });
 
+function mergeDuplicateVehiclesByImage() {
+    const mergedMap = new Map();
+    vehicles.forEach((vehicle) => {
+        const imageKey = decodeURI(String(vehicle.image || "").trim());
+        const existing = mergedMap.get(imageKey);
+        if (!existing) {
+            mergedMap.set(imageKey, { ...vehicle });
+            return;
+        }
+
+        existing.stock = Number(existing.stock || 0) + Number(vehicle.stock || 0);
+        if ((!existing.name || existing.name.startsWith("Auto Part Gallery")) && vehicle.name) {
+            existing.name = vehicle.name;
+        }
+        if ((!existing.category || existing.category === "Accessories") && vehicle.category) {
+            existing.category = vehicle.category;
+        }
+        if (Number(vehicle.rating || 0) > Number(existing.rating || 0)) {
+            existing.rating = vehicle.rating;
+        }
+        if (Number(vehicle.price || 0) > 0 && Number(existing.price || 0) === 0) {
+            existing.price = vehicle.price;
+        }
+    });
+
+    vehicles.length = 0;
+    Array.from(mergedMap.values()).forEach((item) => vehicles.push(item));
+}
+
+mergeDuplicateVehiclesByImage();
+
 function extendVehiclesWithGalleryImages() {
     const usedImages = new Set(
         vehicles.map(item => decodeURI(String(item.image || "").split("/").pop() || ""))

@@ -97,6 +97,40 @@ products.forEach((product, index) => {
     product.image = resolveProductImage(product.image, index);
 });
 
+function mergeDuplicateProductsByImage() {
+    const mergedMap = new Map();
+    products.forEach((product) => {
+        const imageKey = decodeURI(String(product.image || "").trim());
+        const existing = mergedMap.get(imageKey);
+        if (!existing) {
+            mergedMap.set(imageKey, { ...product });
+            return;
+        }
+
+        existing.stock = Number(existing.stock || 0) + Number(product.stock || 0);
+        if ((!existing.name || existing.name.startsWith("Auto Part Gallery")) && product.name) {
+            existing.name = product.name;
+        }
+        if ((!existing.category || existing.category === "Accessories") && product.category) {
+            existing.category = product.category;
+        }
+        if (Number(product.rating || 0) > Number(existing.rating || 0)) {
+            existing.rating = product.rating;
+        }
+        if (Number(product.price || 0) > 0 && Number(existing.price || 0) === 0) {
+            existing.price = product.price;
+        }
+    });
+
+    products.length = 0;
+    Array.from(mergedMap.values()).forEach((item, index) => {
+        item.id = index;
+        products.push(item);
+    });
+}
+
+mergeDuplicateProductsByImage();
+
 function normalizeProductPrices() {
     products.forEach((product) => {
         const basePrice = Number(product.price) || 0;
