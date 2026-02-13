@@ -99,6 +99,41 @@ function getCheckoutUser() {
     };
 }
 
+function syncCartActivity() {
+    const user = getCheckoutUser();
+    const key = "liveCartActivities";
+    const all = JSON.parse(localStorage.getItem(key) || "[]");
+    const cartItems = normalizeCartItems(JSON.parse(localStorage.getItem("cart") || "[]"));
+    const total = cartItems.reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 1)), 0);
+    const idx = all.findIndex(entry => String(entry.userId) === String(user.id));
+
+    if (cartItems.length === 0) {
+        if (idx >= 0) {
+            all.splice(idx, 1);
+            localStorage.setItem(key, JSON.stringify(all));
+        }
+        return;
+    }
+
+    const entry = {
+        userId: String(user.id),
+        cartId: `CART-${String(user.id).replace(/[^a-zA-Z0-9_-]/g, "")}`,
+        user,
+        items: cartItems,
+        total,
+        status: "In Cart",
+        date: new Date().toLocaleString(),
+        createdAt: new Date().toISOString()
+    };
+
+    if (idx >= 0) {
+        all[idx] = entry;
+    } else {
+        all.push(entry);
+    }
+    localStorage.setItem(key, JSON.stringify(all));
+}
+
 function getAdminImages() {
     const admin = JSON.parse(localStorage.getItem('adminProducts') || '[]');
     return admin
@@ -172,6 +207,7 @@ function loadCart() {
     const cartData = localStorage.getItem('cart');
     const cartItems = normalizeCartItems(cartData ? JSON.parse(cartData) : []);
     localStorage.setItem('cart', JSON.stringify(cartItems));
+    syncCartActivity();
 
     const container = document.getElementById('cartItemsContainer');
     const emptyMessage = document.getElementById('emptyCartMessage');
@@ -236,6 +272,7 @@ function updateQuantity(index, change) {
     if(cartItems[index]) {
         cartItems[index].quantity = Math.max(1, cartItems[index].quantity + change);
         localStorage.setItem('cart', JSON.stringify(cartItems));
+        syncCartActivity();
         loadCart();
     }
 }
@@ -248,6 +285,7 @@ function removeFromCart(index) {
 
         cartItems.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cartItems));
+        syncCartActivity();
         loadCart();
     }
 }
@@ -376,6 +414,7 @@ Thank you for your order!`;
     // Clear cart and discount
     localStorage.removeItem('cart');
     localStorage.removeItem('discount');
+    syncCartActivity();
 
     // Redirect to home
     setTimeout(() => {
@@ -471,6 +510,7 @@ function addSuggestedToCart(id, name, price, image) {
     }
 
     localStorage.setItem('cart', JSON.stringify(cartItems));
+    syncCartActivity();
     loadCart();
     
     alert(`${name} added to cart!`);

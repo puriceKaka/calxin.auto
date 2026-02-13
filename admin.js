@@ -62,6 +62,13 @@ document.addEventListener("DOMContentLoaded", function() {
     loadOrdersTable();
 });
 
+window.addEventListener("storage", function(event) {
+    const watched = ["orders", "cart", "liveCartActivities", "adminProducts", "adminImages"];
+    if (!watched.includes(event.key || "")) return;
+    loadDashboard();
+    loadOrdersTable();
+});
+
 // ================================
 // SECTION NAVIGATION
 // ================================
@@ -101,10 +108,11 @@ function showSection(sectionId, navEl) {
 // ================================
 function loadDashboard() {
     orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const liveCarts = getLiveCartActivities();
     document.getElementById("totalProducts").textContent = products.length;
     document.getElementById("totalPosts").textContent = posts.length;
     document.getElementById("totalImages").textContent = getAllImages().length;
-    document.getElementById("totalOrders").textContent = orders.length;
+    document.getElementById("totalOrders").textContent = orders.length + liveCarts.length;
 }
 
 // ================================
@@ -538,16 +546,22 @@ function getAllImages() {
 // ================================
 function loadOrdersTable() {
     orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const liveCarts = getLiveCartActivities();
     const tbody = document.getElementById("ordersTableBody");
     if(!tbody) return;
     tbody.innerHTML = "";
 
-    if(orders.length === 0) {
-        tbody.innerHTML = "<tr><td colspan='6' style='text-align:center;color:#888;'>No orders placed yet.</td></tr>";
+    const combined = [
+        ...orders.map(order => ({ ...order, sourceType: "order" })),
+        ...liveCarts.map(cart => ({ ...cart, sourceType: "cart" }))
+    ];
+
+    if(combined.length === 0) {
+        tbody.innerHTML = "<tr><td colspan='6' style='text-align:center;color:#888;'>No orders or carts yet.</td></tr>";
         return;
     }
 
-    orders
+    combined
         .slice()
         .sort((a, b) => new Date(b.createdAt || b.date || 0) - new Date(a.createdAt || a.date || 0))
         .forEach((order, index) => {
@@ -558,24 +572,32 @@ function loadOrdersTable() {
             const itemCount = Array.isArray(order.items) ? order.items.length : 0;
             const total = Number(order.total) || 0;
             const status = order.status || "Pending";
-            const orderId = order.orderId || `ORD-${index + 1}`;
+            const orderId = order.sourceType === "cart"
+                ? (order.cartId || `CART-${index + 1}`)
+                : (order.orderId || `ORD-${index + 1}`);
+            const statusCell = order.sourceType === "cart"
+                ? `<span class="cart-status-pill">In Cart</span>`
+                : `<select class="order-status-select" onchange="updateOrderStatus('${orderId}', this.value)">
+                        <option value="Pending" ${status === "Pending" ? "selected" : ""}>Pending</option>
+                        <option value="Processing" ${status === "Processing" ? "selected" : ""}>Processing</option>
+                        <option value="Completed" ${status === "Completed" ? "selected" : ""}>Completed</option>
+                        <option value="Cancelled" ${status === "Cancelled" ? "selected" : ""}>Cancelled</option>
+                    </select>`;
             row.innerHTML = `
                 <td>${orderId}</td>
                 <td>${order.date || "-"}</td>
                 <td>${customer}</td>
                 <td>${itemCount}</td>
                 <td>${total.toLocaleString()}</td>
-                <td>
-                    <select class="order-status-select" onchange="updateOrderStatus('${orderId}', this.value)">
-                        <option value="Pending" ${status === "Pending" ? "selected" : ""}>Pending</option>
-                        <option value="Processing" ${status === "Processing" ? "selected" : ""}>Processing</option>
-                        <option value="Completed" ${status === "Completed" ? "selected" : ""}>Completed</option>
-                        <option value="Cancelled" ${status === "Cancelled" ? "selected" : ""}>Cancelled</option>
-                    </select>
-                </td>
+                <td>${statusCell}</td>
             `;
             tbody.appendChild(row);
         });
+}
+
+function getLiveCartActivities() {
+    const entries = JSON.parse(localStorage.getItem("liveCartActivities") || "[]");
+    return (entries || []).filter(entry => Array.isArray(entry.items) && entry.items.length > 0);
 }
 
 function updateOrderStatus(orderId, status) {

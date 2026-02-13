@@ -164,6 +164,60 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let liked = JSON.parse(localStorage.getItem("liked")) || [];
 const LOCAL_FALLBACK_IMAGE = "calxin.images/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg";
 
+function getCartActivityUser() {
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+    const guest = JSON.parse(localStorage.getItem("userInfo") || "null");
+    const identity = (user && (user.email || user.phone)) || (guest && (guest.email || guest.phone)) || "guest";
+    return {
+        id: String(identity),
+        name: (user && user.name) || (guest && guest.name) || "Guest User",
+        email: (user && user.email) || (guest && guest.email) || "",
+        phone: (user && user.phone) || (guest && guest.phone) || ""
+    };
+}
+
+function syncCartActivity() {
+    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    const user = getCartActivityUser();
+    const key = "liveCartActivities";
+    const all = JSON.parse(localStorage.getItem(key) || "[]");
+    const cleanedItems = (cartItems || []).map(item => ({
+        productId: item.productId || item.id || 0,
+        name: item.name || "Product",
+        price: Number(item.price) || 0,
+        quantity: Number(item.quantity || item.qty) || 1,
+        image: item.image || ""
+    }));
+    const total = cleanedItems.reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 1)), 0);
+    const idx = all.findIndex(entry => String(entry.userId) === user.id);
+
+    if (cleanedItems.length === 0) {
+        if (idx >= 0) {
+            all.splice(idx, 1);
+            localStorage.setItem(key, JSON.stringify(all));
+        }
+        return;
+    }
+
+    const entry = {
+        userId: user.id,
+        cartId: `CART-${user.id.replace(/[^a-zA-Z0-9_-]/g, "")}`,
+        user,
+        items: cleanedItems,
+        total,
+        status: "In Cart",
+        date: new Date().toLocaleString(),
+        createdAt: new Date().toISOString()
+    };
+
+    if (idx >= 0) {
+        all[idx] = entry;
+    } else {
+        all.push(entry);
+    }
+    localStorage.setItem(key, JSON.stringify(all));
+}
+
 // Show cart with edit functionality
 function showCart() {
     // Navigate to cart page
@@ -360,6 +414,7 @@ function addToCart(name, price, image) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+    syncCartActivity();
     updateCartCount();
     
     // Show a nice toast notification
