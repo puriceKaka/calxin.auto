@@ -564,8 +564,8 @@ ul {
 }
 
 .card:hover {
-    transform: translateY(-4px) scale(1.008);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    transform: translateY(-2px) scale(1.003);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
 }
 
 .card-image-wrapper {
@@ -584,7 +584,7 @@ ul {
 }
 
 .card-image-wrapper img:hover {
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
 .stock-badge {
@@ -1464,8 +1464,8 @@ html {
 }
 
 .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
 }
 
 .product-image {
