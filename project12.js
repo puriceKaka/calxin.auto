@@ -110,12 +110,13 @@ function filterByCategory(category) {
                             ? "stock-critical"
                             : "stock-out";
         const stockText = vehicle.stock > 0 ? `${vehicle.stock} in stock` : "Out of stock";
+        const badgeColor = getStockBadgeColor(index);
         
         html += `
         <div class="card" style="opacity: 1;">
             <div class="card-image-wrapper" onclick="quickAddToCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)">
                 <img src="${vehicle.image}" alt="${vehicle.name}" onerror="this.src='${LOCAL_FALLBACK_IMAGE}'">
-                <span class="stock-badge ${stockClass}">${stockText}</span>
+                <span class="stock-badge ${stockClass}" style="background:${badgeColor};">${stockText}</span>
             </div>
             <div class="card-content">
                 <h3>${vehicle.name}</h3>
@@ -163,6 +164,12 @@ document.addEventListener("DOMContentLoaded", function(){
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let liked = JSON.parse(localStorage.getItem("liked")) || [];
 const LOCAL_FALLBACK_IMAGE = "calxin.images/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg";
+
+function getStockBadgeColor(seed) {
+    const value = Math.abs(Number(seed) || 0);
+    const hue = (value * 47) % 360;
+    return `hsl(${hue}, 68%, 42%)`;
+}
 
 // Show cart with edit functionality
 function showCart() {
@@ -917,12 +924,13 @@ document.addEventListener("DOMContentLoaded", function(){
                                 ? "stock-critical"
                                 : "stock-out";
             const stockText = vehicle.stock > 0 ? `${vehicle.stock} in stock` : "Out of stock";
+            const badgeColor = getStockBadgeColor(index);
 
             card.style.cursor = "pointer";
             card.innerHTML = `
                 <div class="card-image-wrapper" onclick="quickAddToCart('${vehicle.name.replace(/'/g, "\\'")}',${vehicle.price},'${vehicle.image}', event)">
                     <img src="${vehicle.image}" alt="${vehicle.name}" onerror="this.src='${LOCAL_FALLBACK_IMAGE}'">
-                    <span class="stock-badge ${stockClass}">${stockText}</span>
+                    <span class="stock-badge ${stockClass}" style="background:${badgeColor};">${stockText}</span>
                 </div>
                 <div class="card-content">
                     <h3>${vehicle.name}</h3>

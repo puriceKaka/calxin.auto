@@ -69,6 +69,14 @@ function getStockClass(stock) {
     return "stock-out";
 }
 
+function getSuggestedBadgeColor(seed) {
+    const palette = [
+        "#00796b", "#2e7d32", "#1565c0", "#6a1b9a", "#ef6c00",
+        "#00838f", "#c62828", "#5d4037", "#283593", "#37474f"
+    ];
+    return palette[Math.abs(Number(seed) || 0) % palette.length];
+}
+
 function normalizeCartItems(items) {
     return (items || []).map(item => ({
         productId: item.productId || item.id || 0,
@@ -409,7 +417,7 @@ function loadSuggestedProducts() {
         return;
     }
 
-    suggested.forEach(product => {
+    suggested.forEach((product, index) => {
         const card = document.createElement('div');
         card.className = 'suggested-card';
         const safeName = String(product.name || "").replace(/'/g, "\\'");
@@ -417,12 +425,13 @@ function loadSuggestedProducts() {
         const stock = Number(product.stock) || 0;
         const stockClass = getStockClass(stock);
         const stockText = stock > 0 ? `${stock} in stock` : "Out of stock";
+        const badgeColor = getSuggestedBadgeColor((Number(product.id) || 0) + index);
         const liked = isInWishlist(product.id);
         const likedClass = liked ? "liked" : "";
         const heart = liked ? "❤️" : "🤍";
         card.innerHTML = `
             <div class="suggested-card-image" onclick="addSuggestedToCart(${product.id}, '${safeName}', ${Number(product.price) || 0}, '${safeImage}')">
-                <span class="suggested-stock-badge ${stockClass}">${stockText}</span>
+                <span class="suggested-stock-badge ${stockClass}" style="background:${badgeColor};">${stockText}</span>
                 <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/180x150?text=${encodeURIComponent(product.name)}'">
             </div>
             <div class="suggested-card-info">
