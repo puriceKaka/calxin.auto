@@ -1,7 +1,7 @@
 // Sample products data (same as in home-gallery.js)
 const products = [
     {id: 0, name: "Engine Assembly Complete", price: 45000, category: "Engines", stock: 12, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.08 PM.jpeg", rating: 4.8},
-    {id: 1, name: "Transmission Automatic", price: 38000, category: "Transmissions", stock: 8, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.09 PM.jpeg", rating: 4.7},
+    {id: 1, name: "Automatic Transmission", price: 38000, category: "Transmissions", stock: 8, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.09 PM.jpeg", rating: 4.7},
     {id: 2, name: "Brake Pads Set", price: 2500, category: "Brakes", stock: 45, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.16 PM.jpeg", rating: 4.9},
     {id: 3, name: "Brake Rotors Pair", price: 5800, category: "Brakes", stock: 32, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.18 PM.jpeg", rating: 4.6},
     {id: 4, name: "Car Battery 12V 100A", price: 8500, category: "Electrical", stock: 28, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg", rating: 4.8},
@@ -13,7 +13,7 @@ const products = [
     {id: 10, name: "Air Filter Kit", price: 1500, category: "Filters", stock: 50, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.34 PM.jpeg", rating: 4.9},
     {id: 11, name: "Oil Filter", price: 800, category: "Filters", stock: 60, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.35 PM.jpeg", rating: 5.0},
     {id: 12, name: "Cabin Air Filter", price: 1200, category: "Filters", stock: 40, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.37 PM.jpeg", rating: 4.7},
-    {id: 13, name: "Spark Plugs Set 4", price: 2800, category: "Ignition", stock: 48, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg", rating: 4.8},
+    {id: 13, name: "Spark Plug Set (4 pcs)", price: 2800, category: "Ignition", stock: 48, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg", rating: 4.8},
     {id: 14, name: "Coil Pack", price: 4500, category: "Ignition", stock: 20, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.40 PM.jpeg", rating: 4.6},
     {id: 15, name: "Fuel Pump", price: 7800, category: "Fuel System", stock: 16, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.42 PM.jpeg", rating: 4.7},
     {id: 16, name: "Fuel Filter", price: 1800, category: "Fuel System", stock: 42, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.44 PM.jpeg", rating: 4.9},
@@ -25,20 +25,20 @@ const products = [
     {id: 22, name: "Tie Rod Ends Pair", price: 2800, category: "Steering", stock: 44, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.53 PM.jpeg", rating: 4.9},
     {id: 23, name: "Tyre 175/65 R14", price: 4500, category: "Tyres", stock: 38, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.55 PM.jpeg", rating: 4.8},
     {id: 24, name: "Tyre 195/55 R15", price: 5200, category: "Tyres", stock: 32, image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.59 PM.jpeg", rating: 4.7},
-    {id: 25, name: "Alloy Wheel 16 inch", price: 9500, category: "Wheels", stock: 16, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.00 PM.jpeg", rating: 4.8},
+    {id: 25, name: "Alloy Wheel 16-inch", price: 9500, category: "Wheels", stock: 16, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.00 PM.jpeg", rating: 4.8},
     {id: 26, name: "Car Wax Premium", price: 950, category: "Accessories", stock: 55, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.01 PM.jpeg", rating: 4.9},
     {id: 27, name: "Floor Mats Set", price: 1800, category: "Accessories", stock: 42, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.03 PM.jpeg", rating: 4.7},
     {id: 28, name: "Seat Covers Premium", price: 5500, category: "Accessories", stock: 24, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.05 PM.jpeg", rating: 4.8},
     {id: 29, name: "Roof Rack Bars", price: 3800, category: "Accessories", stock: 20, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.06 PM.jpeg", rating: 4.6},
-    {id: 30, name: "Car Stereo System", price: 12500, category: "Audio System", stock: 11, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.08 PM.jpeg", rating: 4.7},
-    {id: 31, name: "Reverse Camera Kit", price: 4200, category: "Audio System", stock: 28, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.09 PM.jpeg", rating: 4.8},
+    {id: 30, name: "Car Stereo System", price: 12500, category: "Audio", stock: 11, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.08 PM.jpeg", rating: 4.7},
+    {id: 31, name: "Reverse Camera Kit", price: 4200, category: "Audio", stock: 28, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.09 PM.jpeg", rating: 4.8},
     {id: 32, name: "LED Headlights Pair", price: 8800, category: "Lighting", stock: 17, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.11 PM.jpeg", rating: 4.9},
     {id: 33, name: "Tail Light Assembly", price: 3500, category: "Lighting", stock: 31, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.12 PM.jpeg", rating: 4.8},
     {id: 34, name: "Windshield Wiper Blades", price: 1200, category: "Accessories", stock: 48, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.14 PM.jpeg", rating: 4.9},
     {id: 35, name: "Car Door Lock Actuator", price: 2800, category: "Electrical", stock: 19, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.15 PM.jpeg", rating: 4.6},
-    {id: 36, name: "Window Regulator Motor", price: 3200, category: "Electrical", stock: 22, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.17 PM.jpeg", rating: 4.7},
-    {id: 37, name: "HVAC Compressor", price: 14500, category: "HVAC System", stock: 9, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.18 PM.jpeg", rating: 4.8},
-    {id: 38, name: "Cabin Air Vents", price: 1500, category: "HVAC System", stock: 36, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.20 PM.jpeg", rating: 4.7},
+    {id: 36, name: "Window Regulator Motor", price: 3200, category: "Electrical", stock: 22, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.01.14 PM.jpeg", rating: 4.7},
+    {id: 37, name: "HVAC Compressor", price: 14500, category: "HVAC", stock: 9, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.18 PM.jpeg", rating: 4.8},
+    {id: 38, name: "Cabin Air Vents", price: 1500, category: "HVAC", stock: 36, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.20 PM.jpeg", rating: 4.7},
     {id: 39, name: "Engine Oil 5L Synthetic", price: 2500, category: "Oils & Fluids", stock: 58, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.22 PM.jpeg", rating: 4.9},
     {id: 40, name: "Coolant Concentrate 1L", price: 950, category: "Oils & Fluids", stock: 62, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.24 PM.jpeg", rating: 4.8},
     {id: 41, name: "Brake Fluid 500ml", price: 650, category: "Oils & Fluids", stock: 55, image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.25 PM.jpeg", rating: 5.0},
@@ -96,6 +96,16 @@ function resolveProductImage(path, index) {
 products.forEach((product, index) => {
     product.image = resolveProductImage(product.image, index);
 });
+
+function normalizeProductPrices() {
+    products.forEach((product) => {
+        const basePrice = Number(product.price) || 0;
+        const scaledPrice = Math.round((basePrice * 0.18) / 50) * 50;
+        product.price = Math.max(350, Math.min(8500, scaledPrice));
+    });
+}
+
+normalizeProductPrices();
 
 let currentProduct = null;
 let quantity = 1;

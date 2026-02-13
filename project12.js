@@ -649,7 +649,7 @@ document.addEventListener("keydown", function(e){
 // ================================
 const vehicles = [
     { name: "Engine Assembly Complete", price: 45000, category: "Engines", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.08 PM.jpeg", stock: 12, rating: 4.8 },
-    { name: "Transmission Automatic", price: 38000, category: "Transmissions", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.09 PM.jpeg", stock: 8, rating: 4.7 },
+    { name: "Automatic Transmission", price: 38000, category: "Transmissions", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.09 PM.jpeg", stock: 8, rating: 4.7 },
     { name: "Brake Pads Set", price: 2500, category: "Brakes", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.16 PM.jpeg", stock: 45, rating: 4.9 },
     { name: "Brake Rotors Pair", price: 5800, category: "Brakes", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.18 PM.jpeg", stock: 32, rating: 4.6 },
     { name: "Car Battery 12V 100A", price: 8500, category: "Electrical", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.19 PM.jpeg", stock: 28, rating: 4.8 },
@@ -661,7 +661,7 @@ const vehicles = [
     { name: "Air Filter Kit", price: 1500, category: "Filters", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.34 PM.jpeg", stock: 50, rating: 4.9 },
     { name: "Oil Filter", price: 800, category: "Filters", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.35 PM.jpeg", stock: 60, rating: 5.0 },
     { name: "Cabin Air Filter", price: 1200, category: "Filters", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.37 PM.jpeg", stock: 40, rating: 4.7 },
-    { name: "Spark Plugs Set 4", price: 2800, category: "Ignition", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg", stock: 48, rating: 4.8 },
+    { name: "Spark Plug Set (4 pcs)", price: 2800, category: "Ignition", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.39 PM.jpeg", stock: 48, rating: 4.8 },
     { name: "Coil Pack", price: 4500, category: "Ignition", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.40 PM.jpeg", stock: 20, rating: 4.6 },
     { name: "Fuel Pump", price: 7800, category: "Fuel System", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.42 PM.jpeg", stock: 16, rating: 4.7 },
     { name: "Fuel Filter", price: 1800, category: "Fuel System", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.44 PM.jpeg", stock: 42, rating: 4.9 },
@@ -673,7 +673,7 @@ const vehicles = [
     { name: "Tie Rod Ends Pair", price: 2800, category: "Steering", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.53 PM.jpeg", stock: 44, rating: 4.9 },
     { name: "Tyre 175/65 R14", price: 4500, category: "Tyres", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.55 PM.jpeg", stock: 38, rating: 4.8 },
     { name: "Tyre 195/55 R15", price: 5200, category: "Tyres", image: "calxin.images/WhatsApp Image 2026-01-23 at 4.58.59 PM.jpeg", stock: 32, rating: 4.7 },
-    { name: "Alloy Wheel 16 inch", price: 9500, category: "Wheels", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.00 PM.jpeg", stock: 16, rating: 4.8 },
+    { name: "Alloy Wheel 16-inch", price: 9500, category: "Wheels", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.00 PM.jpeg", stock: 16, rating: 4.8 },
     { name: "Car Wax Premium", price: 950, category: "Accessories", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.01 PM.jpeg", stock: 55, rating: 4.9 },
     { name: "Floor Mats Set", price: 1800, category: "Accessories", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.03 PM.jpeg", stock: 42, rating: 4.7 },
     { name: "Seat Covers Premium", price: 5500, category: "Accessories", image: "calxin.images/WhatsApp Image 2026-01-23 at 5.00.05 PM.jpeg", stock: 24, rating: 4.8 },
